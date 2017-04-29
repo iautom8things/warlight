@@ -1,0 +1,410 @@
+# Caledonia
+Caledonia Superior:Caledonia Inferior
+Caledonia Inferior:Caledonia Superior,Chebsonesus,Vaspasiana
+Vaspasiana:Caledonia Inferior,Darnini,Vallum Aelium
+
+# Britannia
+Vallum Aelium:Vaspasiana,Britannia Secunda,Valentia_B
+Britannia Secunda:Vallum Aelium,Gangani,Valentia_B,Flavia Cesariensis
+Valentia_B:Vallum Aelium,Britannia Secunda,Flavia Cesariensis,Camulodunum
+Flavia Cesariensis:Britannia Secunda,Valentia_B,Camulodunum,Londinium,Britannia Prima
+Britannia Prima:Flavia Cesariensis,Londinium,Coriallum
+Londinium:Flavia Cesariensis,Camulodunum,Britannia Prima,Rotomagus
+
+# Camulodunum
+Camulodunum:Valentia_B,Flavia Cesariensis,Londinium
+
+# Hibernia
+Darnini:Vaspasiana,Eblani,Eridini
+Eridini:Darnini,Eblani,Gangani
+Eblani:Darnini,Eridini,Gangani
+Gangani:Eridini,Eblani,Britannia Secunda
+
+# Cimbrica
+Chebsonesus:Caledonia Inferior,Saxsones
+Saxsones:Chebsonesus,Codania,Teutones,Istaevones
+Codania:Saxsones,Scandia
+Scandia:Codania
+
+# Belgica Superior
+Itius Portis:Istaevones,Bagacum,Bononia
+Bagacum:Itius Portis,Istaevones,Teutones,Colonia Agrippina,Augusta Treviorum,Remi,Ambriani,Bononia
+Ambriani:Bononia,Bagacum,Remi,Parisii,Rotomagus
+Bononia:Itius Portis,Bagacum,Ambriani,Rotomagus
+
+# Belgica Inferior
+Colonia Agrippina:Bagacum,Teutones,Hermunduri,Augusta Treviorum
+Augusta Treviorum:Bagacum,Colonia Agrippina,Hermunduri,Quadi,Divodurum,Vesontio,Remi
+Divodurum:Augusta Treviorum,Quadi,Casta Regna,Cambodunum,Vesontio
+Vesontio:Augusta Treviorum,Remi,Divodurum,Cambodunum,Agustobona
+Remi:Bagacum,Augusta Treviorum,Vesontio,Agustobona,Parisii,Ambriani
+
+# Germania Superior
+Hermunduri:Teutones,Rugii,Lemovii,Burii,Quadi,Augusta Treviorum,Colonia Agrippina
+Burii:Lemovii,Saboci,Capri,Quadi,Hermunduri
+Capri:Burii,Saboci,Buri,Lauriacum,Casta Batava,Casta Regna,Quadi
+Quadi:Hermunduri,Burii,Capri,Casta Regna,Divodurum,Augusta Treviorum
+
+# Germania Inferior
+Istaevones:Saxsones,Teutones,Bagacum,Itius Portis
+Teutones:Istaevones,Saxsones,Rugii,Hermunduri,Colonia Agrippina,Bagacum
+Rugii:Teutones,Lemovii,Hermunduri
+Lemovii:Gothones,Burgundi,Saboci,Burii,Hermunduri,Rugii
+
+# Germanicia
+Saboci:Lemovii,Burgundi,Sulones,Buri,Capri,Burii
+Burgundi:Saboci,Lemovii,Gothones,Sulones
+Sulones:Burgundi,Roloxani,Costoboci,Buri,Saboci
+Gothones:Lemovii,Burgundi
+
+# Lugdunesis Prima
+Rotomagus:Londinium,Bononia,Ambriani,Parisii,Turones,Abrincate
+Parisii:Ambriani,Remi,Agustobona,Aureliani,Turones,Rotomagus
+Turones:Rotomagus,Parisii,Aureliani,Lugdunum,Pictavi,Namnetes,Abrincate
+
+# Lugdunesis Secunda
+Abrincate:Rotomagus,Turones,Namnetes,Vindana Portus
+Namnetes:Abrincate,Turones,Pictavi,Vindana Portus
+Vindana Portus:Abrincate,Namnetes,Pictavi,Bundigala,Coriallum
+Coriallum:Vindana Portus,Britannia Prima
+
+# Maxima Sequanorum
+Aureliani:Turones,Parisii,Agustobona,Alesia,Lugdunum
+Agustobona:Parisii,Remi,Vesontio,Cambodunum,Curia,Alesia,Aureliani
+Alesia:Aureliani,Agustobona,Curia,Matis,Lugdunum
+Matis:Alesia,Curia,Genava,Valentia_G,Lugdunum
+Lugdunum:Turones,Aureliani,Alesia,Matis,Valentia_G,Gergovia,Pictavi
+
+# Aquitania
+Pictavi:Vindana Portus,Namnetes,Turones,Lugdunum,Gergovia,Bundigala
+Gergovia:Pictavi,Lugdunum,Valentia_G,Tolosa,Bundigala
+Bundigala:Vindana Portus,Pictavi,Gergovia,Tolosa,Elusa
+Elusa:Bundigala,Tolosa,Emporion,Pompaelo
+
+# Narbonensis
+Valentia_G:Lugdunum,Matis,Genava,Nemausus,Narbo Martius,Tolosa,Gergovia
+Genava:Matis,Curia,Transpadana,Nemausus,Valentia_G
+Nemausus:Valentia_G,Genava,Transpadana,Massilia,Narbo Martius
+Massilia:Nemausus,Transpadana,Taurinor
+Narbo Martius:Emporion,Tolosa,Valentia_G,Nemausus
+Tolosa:Gergovia,Valentia_G,Narbo Martius,Emporion,Elusa,Bundigala
+
+# Gelecija
+Brigantium:Lucus Asturum,Asturica Augusta,Aquae Flavia
+Lucus Asturum:Brigantium,Asturica Augusta,Pallantia,Flaviobriga
+Asturica Augusta:Brigantium,Lucus Asturum,Pallantia,Cauca,Salamantica,Aquae Flavia
+Aquae Flavia:Brigantium,Asturica Augusta,Salamantica,Aeminium
+
+# Lusitania
+Aeminium:Aquae Flavia,Salamantica,Emerita Augusta,Pax Lulia
+Salamantica:Aquae Flavia,Asturica Augusta,Cauca,Emerita Augusta,Aeminium
+Emerita Augusta:Salamantica,Cauca,Corduba,Hispalis,Pax Lulia,Aeminium
+Pax Lulia:Aeminium,Emerita Augusta,Hispalis,Ossonoba
+Ossonoba:Pax Lulia,Hispalis,Gades
+
+# Tarraconesis Superior
+Flaviobriga:Lucus Asturum,Pallantia,Pompaelo
+Pompaelo:Elusa,Emporion,Osca,Pallantia,Flaviobriga
+Pallantia:Flaviobriga,Pompaelo,Osca,Termes,Sergovia,Cauca,Asturica Augusta,Lucus Asturum
+Cauca:Pallantia,Sergovia,Corduba,Emerita Augusta,Salamantica,Asturica Augusta
+Sergovia:Pallantia,Termes,Toletum,Corduba,Cauca
+Termes:Pallantia,Osca,Lucentum,Toletum,Sergovia
+
+# Tarraconensis Inferior
+Emporion:Elusa,Tolosa,Narbo Martius,Tarraco,Valentia_H,Osca,Pompaelo
+Osca:Pompaelo,Emporion,Valentia_H,Lucentum,Termes,Pallantia
+Valentia_H:Emporion,Tarraco,Osca,Lucentum
+Tarraco:Emporion,Valentia_H,Baleares
+Baleares:Tarraco,Carthago Nova,Caralis,Cesarea
+
+# Bactica
+Hispalis:Emerita Augusta,Corduba,Astigi,Gades,Ossonoba,Pax Lulia
+Corduba:Cauca,Sergovia,Toletum,Astigi,Hispalis,Emerita Augusta
+Astigi:Corduba,Toletum,Castulo,Malaca,Gades,Hispalis
+Gades:Hispalis,Astigi,Malaca,Carteia,Ossonoba
+Malaca:Gades,Astigi,Castulo
+Carteia:Gades,Tingis
+
+# Carthaginienisis
+Lucentum:Termes,Osca,Valentia_H,Carthago Nova,Toletum
+Toletum:Sergovia,Termes,Lucentum,Carthago Nova,Castulo,Astigi,Corduba
+Carthago Nova:Lucentum,Baleares,Castulo,Toletum
+Castulo:Toletum,Carthago Nova,Malaca,Astigi
+
+# Mauretania
+Tingis:Carteia,Rusaddir,Pomaria,Volubillis
+Rusaddir:Tingis,Cesarea,Auzia,Pomaria,Tingis
+Pomaria:Tingis,Rusaddir,Volubillis,Auzia
+Volubillis:Tingis,Rusaddir,Pomaria
+
+# Numidia
+Cesarea:Baleares,Utica,Cuicul,Auzia,Rusaddir
+Utica:Cesarea,Cuicul,Gemellae,Amaedara,Carthago
+Cuicul:Auzia,Cesarea,Utica,Gemellae
+Auzia:Pomaria,Rusaddir,Cesarea,Cuicul
+
+# Carthago
+Carthago:Utica,Caralis,Lilybaeum,Zama,Amaedara
+
+# Africa Superior
+Gemellae:Cuicul,Utica,Amaedara,Lambaesis
+Amaedara:Utica,Carthago,Zama,Lambaesis,Gemellae
+Zama:Carthago,Amaedara,Lambaesis,Hadrumetum
+Hadrumetum:Zama,Lambaesis,Thamugadi,Ad Majores,Sabratha
+Thamugadi:Lambaesis,Hadrumetum,Ad Majores
+Lambaesis:Thamugadi,Hadrumetum,Zama,Amaedara,Gemellae
+
+# Africa Inferior
+Ad Majores:Thamugadi,Hadrumetum,Sabratha,Cydamus
+Sabratha:Hadrumetum,Ad Majores,Cydamus,Oea
+Oea:Sabratha,Cydamus,Berenice,Hadriane
+Cydamus:Ad Majores,Sabratha,Oea,Berenice
+
+# Cyrene
+Berenice:Cydamus,Oea,Hadriane
+Hadriane:Oea,Berenice,Cyrene,Hydrax
+Cyrene:Syracuse,Gortyn,Apollonia,Hydrax,Hadriane
+Apollonia:Cyrene,Hydrax,Paraetonium
+Hydrax:Hadriane,Cyrene,Apollonia,Paraetonium,Maerotis
+
+# Aegyptus
+Paraetonium:Apollonia,Hydrax,Maerotis,Arsimoe,Alexandria
+Maerotis:Hydrax,Paraetonium,Arsimoe
+Arsimoe:Maerotis,Paraetonium,Alexandria,Antaepolis,Lycopolis
+Antaepolis:Arsimoe,Alexandria,Ptolemais,Lycopolis
+Lycopolis:Arsimoe,Antaepolis,Ptolemais,Theba
+
+# Alexandria
+Alexandria:Irakleion,Alana,Antaepolis,Arsimoe,Paraetonium
+
+# Thebais
+Ptolemais:Antaepolis,Lycopolis,Theba
+Theba:Ptolemais,Lycopolis
+
+# Raetia
+Cambodunum:Agustobona,Vesontio,Divodurum,Casta Regna,Augusta Vindelicorum,Curia
+Casta Regna:Cambodunum,Divodurum,Quadi,Capri,Casta Batava,Augusta Vindelicorum
+Curia:Agustobona,Cambodunum,Augusta Vindelicorum,Transpadana,Genava,Matis,Alesia
+Augusta Vindelicorum:Cambodunum,Casta Regna,Casta Batava,Histria,Transpadana,Curia
+Casta Batava:Casta Regna,Capri,Lauriacum,Virunum,Histria,Augusta Vindelicorum
+
+# Noricum
+Virunum:Casta Batava,Lauriacum,Medullum,Albona,Histria
+Lauriacum:Virunum,Casta Batava,Capri,Buri,Sopianae,Poetovio,Medullum
+
+# Liguria
+Transpadana:Curia,Augusta Vindelicorum,Histria,Venetia,Taurinor,Massilia,Nemausus,Genava
+Histria:Augusta Vindelicorum,Casta Batava,Virunum,Albona,Venetia,Transpadana
+Venetia:Histria,Albona,Aemilia,Taurinor,Transpadana
+Taurinor:Transpadana,Venetia,Aemilia,Etruria,Massilia
+
+# Italia Superior
+Etruria:Taurinor,Aemilia,Umbria,Roma,Corsica
+Aemilia:Venetia,Umbria,Etruria,Taurinor
+Umbria:Etruria,Aemilia,Roma,Latium,Picenum
+
+# Italia Inferior
+Latium:Roma,Umbria,Picenum,Campania
+Picenum:Umbria,Latium,Campania,Lucania,Samnium
+Campania:Latium,Picenum,Lucania
+Lucania:Campania,Picenum,Samnium,Tarantum,Brutii
+Brutii: Lucania,Rhegium
+Rhegium:Brutii,Messana
+
+# Corsia et Sardinia
+Corsica:Etruria,Tirris
+Tirris:Corsica,Caralis
+Caralis:Tirris,Baleares,Carthago
+
+# Roma
+Roma:Etruria,Umbria,Latium
+
+# Apulia
+Samnium:Picenum,Lucania,Tarantum
+Tarantum:Samnium,Lucania,Epirus
+
+# Sicilia
+Lilybaeum:Messana,Syracuse,Carthago
+Messana:Lilybaeum,Syracuse,Rhegium
+Syracuse:Lilybaeum,Messana,Cyrene
+
+# Istria
+Albona:Venetia,Histria,Virunum,Medullum,Tarsatica
+Medullum:Albona,Virunum,Lauriacum,Poetovio,Lamatis,Tarsatica
+Tarsatica:Albona,Medullum,Lamatis,Salonae
+
+# Moesia
+Sopianae:Buri,Porolissum,Apulum,Viminacium,Poetovio,Lauriacum
+Poetovio:Lauriacum,Sopianae,Viminacium,Sirmium,Lamatis,Medullum
+Viminacium:Sopianae,Apulum,Oescus,Serdica,Naissus,Sirmium,Poetovio
+Sirmium:Poetovio,Viminacium,Naissus,Bistue Nova,Lamatis
+Naissus:Viminacium,Serdica,Narona,Bistue Nova,Sirmium
+
+# Dalmatia
+Lamatis:Tarsatica,Medullum,Poetovio,Sirmium,Bistue Nova,Salonae
+Salonae:Tarsatica,Lamatis,Bistue Nova,Narona
+Bistue Nova:Lamatis,Sirmium,Naissus,Narona,Salonae
+Narona:Bistue Nova,Naissus,Serdica,Philippolis,Dyrrhachium,Salonae
+
+# Dacia
+Porolissum:Buri,Costoboci,Napoca,Apulum,Sopianae
+Napoca:Costoboci,Roloxani,Izayges,Praetoria Augusta,Sarmizegetusa,Oescus,Apulum,Porolissum
+Praetoria Augusta:Napoca,Izayges,Odessus,Tyras,Sarmizegetusa
+Apulum:Porolissum,Napoca,Oescus,Viminacium,Sopianae
+Oescus:Apulum,Napoca,Sarmizegetusa,Bagaraca,Serdica,Viminacium
+Sarmizegetusa:Napoca,Praetoria Augusta,Tyras,Troesmis,Bagaraca,Oescus
+
+# Dacia minor
+Tyras:Praetoria Augusta,Odessus,Troesmis,Sarmizegetusa
+Troesmis:Tyras,Odessus,Delvetum,Bagaraca,Sarmizegetusa
+Odessus:Troesmis,Delvetum
+
+# Tracia
+Serdica:Viminacium,Oescus,Bagaraca,Philippolis,Narona,Naissus
+Bagaraca:Oescus,Sarmizegetusa,Troesmis,Delvetum,Hadrianopolis,Philippolis,Serdica
+Delvetum:Troesmis,Odessus,Hadrianopolis,Bagaraca
+Philippolis:Serdica,Bagaraca,Hadrianopolis,Plulippi,Stobi,Dyrrhachium,Narona
+Hadrianopolis:Bagaraca,Delvetum,Byzantium,Plulippi,Philippolis
+Byzantium:Plulippi,Hadrianopolis,Mysia
+
+# Macedonia
+Dyrrhachium:Narona,Philippolis,Stobi,Pella,Apollonia
+Stobi:Dyrrhachium,Philippolis,Plulippi,Pella
+Plulippi:Philippolis,Hadrianopolis,Byzantium,Pella
+Apollonia:Dyrrhachium,Pella,Thebes,Epirus
+Pella:Dyrrhachium,Stobi,Plulippi,Thebes,Apollonia
+
+# Achaia
+Epirus:Apollonia,Thebes,Athens,Olympia,Tarantum
+Thebes:Apollonia,Pella,Athens,Epirus
+Athens:Thebes,Epirus,Olympia,Sparta
+Sparta:Athens,Olympia,Gortyn
+Olympia:Epirus,Athens,Sparta
+
+# Creta
+Gortyn:Sparta,Irakleion,Cyrene
+Irakleion:Gortyn,Lycia,Alexandria
+
+# Bithynia et Pontus
+Bithynia:Mysia,Phrygia,Ankyra,Pontus,Paphlagonia
+Paphlagonia:Bithynia,Pontus,Theordosia
+Pontus:Paphlagonia,Bithynia,Ankyra,Anazarbus,Melitene,Sebaste,Trapezus
+
+# Asia
+Mysia:Byzantium,Bithynia,Phrygia,Lydia
+Phrygia:Mysia,Bithynia,Ankyra,Lycaomun,Caria,Lydia
+Lydia:Mysia,Phrygia,Caria
+Caria:Lydia,Phrygia,Lycaomun,Lycia
+Lycia:Caria,Lycaomun,Pamphylia,Irakleion
+
+# Galatia
+Ankyra:Bithynia,Pontus,Anazarbus,Tarsus,Lycaomun,Phrygia
+Lycaomun:Phrygia,Ankyra,Tarsus,Seleucia,Pamphylia,Lycia,Caria
+Pamphylia:Lycia,Lycaomun,Seleucia
+
+# Cilicia
+Anazarbus:Pontus,Melitene,Lycanitis,Tarsus,Ankyra
+Lycanitis:Anazarbus,Melitene,Mazaca,Antiochia,Seleucia,Tarsus
+Seleucia:Pamphylia,Lycaomun,Tarsus,Lycanitis
+Tarsus:Ankyra,Anazarbus,Lycanitis,Seleucia,Lycaomun
+
+# Cappadocia
+Trapezus:Pontus,Sebaste,Phasis
+Sebaste:Trapezus,Phasis,Scanda,Chorzene,Melitene,Pontus
+Melitene:Sebaste,Hispiratis,Mazaca,Lycanitis,Anazarbus,Pontus
+Mazaca:Melitene,Hispiratis,Nisibis,Erag,Heliopolis,Antiochia,Lycanitis
+
+# Syria
+Antiochia:Lycanitis,Mazaca,Heliopolis,Cyprus
+Heliopolis:Antiochia,Mazaca,Erag,Aramea,Damascus
+Erag:Mazaca,Nisibis,Ciresium,Aramea,Heliopolis
+Aramea:Heliopolis,Erag,Ciresium,Athis,Emesa,Damascus
+Cyprus:Antiochia,Damascus
+
+# Judaea
+Damascus:Cyprus,Heliopolis,Aramea,Emesa,Jerusalem
+Jerusalem:Damascus,Emesa,Etusa,Petra,Alana
+
+# Arabia
+Alana:Alexandria,Jerusalem,Petra
+Petra:Alana,Jerusalem,Etusa
+Etusa:Petra,Jerusalem,Emesa,Palmyra
+Emesa:Etusa,Jerusalem,Damascus,Aramea,Athis,Thapsus,Palmyra
+Palmyra:Etusa,Emesa,Thapsus
+Athis:Emesa,Aramea,Ciresium,Anatho,Thapsus
+Thapsus:Palmyra,Emesa,Athis,Anatho
+
+# Mesopotamia Superior
+Nisibis:Mazaca,Amida,Singara,Ciresium,Erag
+Singara:Amida,Tigranocerta,Rhaga,Gazaca,Ciresium,Nisibis
+Ciresium:Nisibis,Singara,Gazaca,Birtha,Anatho,Athis,Aramea,Erag
+
+# Mesopotamia Inferior
+Anatho:Thapsus,Athis,Ciresium,Birtha
+Birtha:Anatho,Ciresium,Gazaca,Opis,Babylon
+Babylon:Birtha,Opis,Sitace
+
+# Atropatene
+Rhaga:Tigranocerta,Percri,Gaetara,Zadracarta,Gazaca,Singara
+Gaetara:Artaxata,Percri,Rhaga,Zadracarta
+Zadracarta:Gaetara,Hyrcania,Ebatana,Praaspa Vera,Gazaca
+Praaspa Vera:Gazaca,Zadracarta,Ebatana,Dura,Opis
+Gazaca:Singara,Rhaga,Zadracarta,Praaspa Vera,Opis,Birtha,Ciresium
+
+# Media
+Ebatana:Zadracarta,Hyrcania,Artemita,Dura,Praaspa Vera
+Hyrcania:Zadracarta,Ebatana,Zadracarta,Hyrcania,Artemita,Dura,Praaspa Vera
+Artemita:Ebatana,Hyrcania,Celonoe,Ctesiphon,Dura
+Celonoe:Hyrcania,Artemita,Ctesiphon,Agra
+
+# Adiabene
+Opis:Gazaca,Praaspa Vera,Dura,Sitace,Babylon,Birtha
+Dura:Praaspa Vera,Ebatana,Artemita,Ctesiphon,Sitace,Opis
+Sitace:Babylon,Opis,Dura,Ctesiphon,Akula
+
+# Ctesiphon
+Ctesiphon:Dura,Artemita,Celonoe,Agra,Akula,Sitace
+
+# Babylonia
+Akula:Sitace,Ctesiphon,Agra,Persepolis
+Agra:Persepolis,Akula,Ctesiphon,Celonoe
+Persepolis:Akula,Agra
+
+# Sarmatia
+Buri:Saboci,Sulones,Costoboci,Porolissum,Sopianae,Lauriacum,Capri
+Costoboci:Sulones,Roloxani,Napoca,Porolissum,Buri
+Roloxani:Sulones,Costoboci,Napoca,Izayges
+Izayges:Roloxani,Napoca,Praetoria Augusta,Odessus,Carcine
+
+# Bosporanum
+Odessus:Tyras,Praetoria Augusta,Izayges,Carcine,Taphra
+Carcine:Izayges,Odessus,Taphra,Exopolis,Hygris
+Exopolis:Carcine,Hygris
+Hygris:Carcine,Exopolis,Tanais
+Tanais:Hygris,Pilana,Pitys
+Pilana:Tanais,Pitys,Dandari
+
+# Taurica
+Taphra:Odessus,Carcine,Theordosia
+Theordosia:Taphra,Paphlagonia
+
+# Colchis
+Pitys:Tanais,Pilana,Dandari,Scymnia
+Dandari:Pilana,Pitys,Scymnia,Phasis
+Scymnia:Pitys,Dandari,Phasis,Scanda,Idessaa
+
+# Iberia
+Phasis:Dandari,Scymnia,Scanda,Sebaste,Trapezus
+Scanda:Phasis,Scymnia,Idessaa,Chorzene,Sebaste
+Idessaa:Scymnia,Scanda,Chorzene,Tibium,Artanissa
+Artanissa:Idessaa,Tibium
+
+# Armenia
+Chorzene:Scanda,Idessaa,Tibium,Caranitis,Tigranocerta,Hispiratis,Melitene,Sebaste
+Tibium:Idessaa,Artanissa,Chorzene,Caranitis,Artaxata
+Hispiratis:Melitene,Chorzene,Tigranocerta,Amida,Mazaca
+Amida:Hispiratis,Tigranocerta,Singara,Nisibis,Mazaca
+Tigranocerta:Chorzene,Caranitis,Percri,Rhaga,Singara,Amida,Hispiratis
+Caranitis:Chorzene,Tibium,Artaxata,Percri,Tigranocerta
+Percri:Caranitis,Artaxata,Gaetara,Rhaga,Tigranocerta
+Artaxata:Tibium,Caranitis,Percri,Gaetara
