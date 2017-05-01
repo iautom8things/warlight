@@ -2,11 +2,11 @@ class BonusGroup(object):
     def __init__ (self, name, value=1.0):
         self.__name = name
         self.__value = value
-        self.__children = []
+        self.__children = set()
 
     def add_territory(self, territory):
         if territory not in self.__children:
-            self.__children.append(territory)
+            self.__children.add(territory)
             territory.register_bonus_group(self)
 
     def remove_territory(self, territory):

@@ -4,7 +4,7 @@ class Game(object):
         player_1 = Player('Player 1','blue',self)
         player_2 = Player('Player 2','red',self)
         self.__players = { player_1.id : player_1, player_2.id : player_2 }
-        self.__player_territories = { player_1.id : [], player_2.id : [] }
+        self.__player_territories = { player_1.id : set(), player_2.id : set() }
         self.__started = False
         self.__territories = {}
         self.__bonus_groups = {}

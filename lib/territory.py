@@ -3,14 +3,14 @@ from .player import Player
 class Territory(object):
     def __init__ (self, name):
         self.__name = name
-        self.__neighboors = []
+        self.__neighboors = set()
         self.__num_troops = 0
         self.__owner = None
-        self.__bonus_groups = []
+        self.__bonus_groups = set()
 
     def register_bonus_group (self, bonus_group):
         if bonus_group not in self.__bonus_groups:
-            self.__bonus_groups.append(bonus_group)
+            self.__bonus_groups.add(bonus_group)
 
     def unregister_bonus_group (self, bonus_group):
         if bonus_group in self.__bonus_groups:
@@ -18,7 +18,7 @@ class Territory(object):
 
     def add_neighboor (self, territory):
         if territory not in self.__neighboors:
-            self.__neighboors.append(territory)
+            self.__neighboors.add(territory)
 
     def remove_neighboor(self, territory):
         if territory in self.__neighboors:
