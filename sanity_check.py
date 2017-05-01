@@ -76,3 +76,6 @@ for bg, data in bg_data.items():
     for n in data['nodes']:
         bg_obj.add_territory(g.territories[n])
     g.add_bonus_group(bg_obj)
+
+g.start_game(5)
+player_1, player_2 = g.players.keys()

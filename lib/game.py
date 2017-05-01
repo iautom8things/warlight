@@ -4,8 +4,8 @@ import random
 class Game(object):
     def __init__ (self,seed=None,starting_troops=10):
         random.seed(seed)
-        player_1 = Player('Player 1','blue',self)
-        player_2 = Player('Player 2','red',self)
+        player_1 = Player('Player 1','blue')
+        player_2 = Player('Player 2','red')
         self.__players = { player_1.id : player_1, player_2.id : player_2 }
         self.__player_territories = { player_1.id : set(), player_2.id : set() }
         self.__started = False
