@@ -1,4 +1,7 @@
 # coding: utf-8
+import matplotlib.pyplot as plt
+import networkx as nx
+
 with open('data/warlight_rormap_adj_matrix', 'r') as f:
     adj_lines = f.readlines()
 adj_lines = [ x for x in adj_lines if not x.startswith('#')]
@@ -26,20 +29,19 @@ for bg, data in bg_data.items():
             continue
         adjmat[x]['value'] += data['value']/len(data['nodes'])
 
+# sort node scores
 scores = [ (k,v['value']) for k,v in adjmat.items() ]
 scores.sort(key=lambda x: x[1],reverse=True)
-
 just_scores = [ x[1] for x in scores ]
 
-import matplotlib.pyplot as plt
+# plot node scores
 plt.plot(just_scores)
 plt.ylabel('node scores')
 plt.show()
 
-import networkx as nx
 
+# gen networkx graph
 G = nx.Graph()
-
 edge_list = []
 for k, data in adjmat.items():
     for n in data['adj_nodes']:
@@ -50,7 +52,7 @@ graph_pos = nx.spectral_layout(G)
 nx.draw_networkx_nodes(G,graph_pos, node_size=10, node_color='blue', alpha=0.3)
 nx.draw_networkx_edges(G,graph_pos)
 nx.draw_networkx_labels(G,graph_pos, font_size=8, font_family='sans-serif')
-
 plt.show()
 
-
+degree_centrality = nx.degree_centrality(G)
+betweenness_centrality = nx.betweenness_centrality(G)
