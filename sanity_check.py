@@ -56,3 +56,23 @@ plt.show()
 
 degree_centrality = nx.degree_centrality(G)
 betweenness_centrality = nx.betweenness_centrality(G)
+
+from lib.game import Game
+from lib.player import Player
+from lib.territory import Territory
+from lib.bonusgroup import BonusGroup
+
+g = Game()
+
+for t in adjmat:
+    g.add_territory(Territory(t))
+
+for t, data in adjmat.items():
+    for n in data['adj_nodes']:
+        g.territories[t].add_neighboor(g.territories[n])
+
+for bg, data in bg_data.items():
+    bg_obj = BonusGroup(bg,data['value'])
+    for n in data['nodes']:
+        bg_obj.add_territory(g.territories[n])
+    g.add_bonus_group(bg_obj)

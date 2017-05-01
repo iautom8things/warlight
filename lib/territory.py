@@ -55,3 +55,15 @@ class Territory(object):
         if type(value) != int:
             raise Exception('owner must be int ({} given)'.format(value))
         self.__num_troops = value
+
+    def __repr__ (self):
+        return str(self)
+
+    def __str__ (self):
+        adj_str = ",".join([ x.name for x in self.__neighboors])
+        if len(adj_str) >= 15:
+            adj_str = "{}...".format(adj_str[:15])
+        bg_str = ",".join([ x.name for x in self.__bonus_groups])
+        if len(bg_str) >= 15:
+            bg_str = "{}...".format(bg_str[:15])
+        return "<Node: {} Adj: [{}] Bonus Groups: [{}]>".format(self.__name,adj_str,bg_str)
