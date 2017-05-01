@@ -163,12 +163,12 @@ Cydamus:Ad Majores,Sabratha,Oea,Berenice
 # Cyrene
 Berenice:Cydamus,Oea,Hadriane
 Hadriane:Oea,Berenice,Cyrene,Hydrax
-Cyrene:Syracuse,Gortyn,Apollonia,Hydrax,Hadriane
-Apollonia:Cyrene,Hydrax,Paraetonium
-Hydrax:Hadriane,Cyrene,Apollonia,Paraetonium,Maerotis
+Cyrene:Syracuse,Gortyn,Apollonia_A,Hydrax,Hadriane
+Apollonia_A:Cyrene,Hydrax,Paraetonium
+Hydrax:Hadriane,Cyrene,Apollonia_A,Paraetonium,Maerotis
 
 # Aegyptus
-Paraetonium:Apollonia,Hydrax,Maerotis,Arsimoe,Alexandria
+Paraetonium:Apollonia_A,Hydrax,Maerotis,Arsimoe,Alexandria
 Maerotis:Hydrax,Paraetonium,Arsimoe
 Arsimoe:Maerotis,Paraetonium,Alexandria,Antaepolis,Lycopolis
 Antaepolis:Arsimoe,Alexandria,Ptolemais,Lycopolis
@@ -249,34 +249,34 @@ Narona:Bistue Nova,Naissus,Serdica,Philippolis,Dyrrhachium,Salonae
 # Dacia
 Porolissum:Buri,Costoboci,Napoca,Apulum,Sopianae
 Napoca:Costoboci,Roloxani,Izayges,Praetoria Augusta,Sarmizegetusa,Oescus,Apulum,Porolissum
-Praetoria Augusta:Napoca,Izayges,Odessus,Tyras,Sarmizegetusa
+Praetoria Augusta:Napoca,Izayges,Odessus_B,Tyras,Sarmizegetusa
 Apulum:Porolissum,Napoca,Oescus,Viminacium,Sopianae
 Oescus:Apulum,Napoca,Sarmizegetusa,Bagaraca,Serdica,Viminacium
 Sarmizegetusa:Napoca,Praetoria Augusta,Tyras,Troesmis,Bagaraca,Oescus
 
 # Dacia minor
-Tyras:Praetoria Augusta,Odessus,Troesmis,Sarmizegetusa
-Troesmis:Tyras,Odessus,Delvetum,Bagaraca,Sarmizegetusa
-Odessus:Troesmis,Delvetum
+Tyras:Praetoria Augusta,Odessus_B,Troesmis,Sarmizegetusa
+Troesmis:Tyras,Odessus_I,Delvetum,Bagaraca,Sarmizegetusa
+Odessus_I:Troesmis,Delvetum
 
 # Tracia
 Serdica:Viminacium,Oescus,Bagaraca,Philippolis,Narona,Naissus
 Bagaraca:Oescus,Sarmizegetusa,Troesmis,Delvetum,Hadrianopolis,Philippolis,Serdica
-Delvetum:Troesmis,Odessus,Hadrianopolis,Bagaraca
+Delvetum:Troesmis,Odessus_I,Hadrianopolis,Bagaraca
 Philippolis:Serdica,Bagaraca,Hadrianopolis,Plulippi,Stobi,Dyrrhachium,Narona
 Hadrianopolis:Bagaraca,Delvetum,Byzantium,Plulippi,Philippolis
 Byzantium:Plulippi,Hadrianopolis,Mysia
 
 # Macedonia
-Dyrrhachium:Narona,Philippolis,Stobi,Pella,Apollonia
+Dyrrhachium:Narona,Philippolis,Stobi,Pella,Apollonia_M
 Stobi:Dyrrhachium,Philippolis,Plulippi,Pella
 Plulippi:Philippolis,Hadrianopolis,Byzantium,Pella
-Apollonia:Dyrrhachium,Pella,Thebes,Epirus
-Pella:Dyrrhachium,Stobi,Plulippi,Thebes,Apollonia
+Apollonia_M:Dyrrhachium,Pella,Thebes,Epirus
+Pella:Dyrrhachium,Stobi,Plulippi,Thebes,Apollonia_M
 
 # Achaia
-Epirus:Apollonia,Thebes,Athens,Olympia,Tarantum
-Thebes:Apollonia,Pella,Athens,Epirus
+Epirus:Apollonia_M,Thebes,Athens,Olympia,Tarantum
+Thebes:Apollonia_M,Pella,Athens,Epirus
 Athens:Thebes,Epirus,Olympia,Sparta
 Sparta:Athens,Olympia,Gortyn
 Olympia:Epirus,Athens,Sparta
@@ -374,18 +374,18 @@ Persepolis:Akula,Agra
 Buri:Saboci,Sulones,Costoboci,Porolissum,Sopianae,Lauriacum,Capri
 Costoboci:Sulones,Roloxani,Napoca,Porolissum,Buri
 Roloxani:Sulones,Costoboci,Napoca,Izayges
-Izayges:Roloxani,Napoca,Praetoria Augusta,Odessus,Carcine
+Izayges:Roloxani,Napoca,Praetoria Augusta,Odessus_B,Carcine
 
 # Bosporanum
-Odessus:Tyras,Praetoria Augusta,Izayges,Carcine,Taphra
-Carcine:Izayges,Odessus,Taphra,Exopolis,Hygris
+Odessus_B:Tyras,Praetoria Augusta,Izayges,Carcine,Taphra
+Carcine:Izayges,Odessus_B,Taphra,Exopolis,Hygris
 Exopolis:Carcine,Hygris
 Hygris:Carcine,Exopolis,Tanais
 Tanais:Hygris,Pilana,Pitys
 Pilana:Tanais,Pitys,Dandari
 
 # Taurica
-Taphra:Odessus,Carcine,Theordosia
+Taphra:Odessus_B,Carcine,Theordosia
 Theordosia:Taphra,Paphlagonia
 
 # Colchis

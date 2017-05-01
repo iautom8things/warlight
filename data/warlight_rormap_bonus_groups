@@ -32,11 +32,11 @@ Numidia,3:Cesarea,Utica,Cuicul,Auzia
 Carthago,1:Carthago
 Africa Superior,5:Gemellae,Amaedara,Zama,Hadrumetum,Thamugadi,Lambaesis
 Africa Inferior,3:Ad Majores,Sabratha,Oea,Cydamus
-Cyrene,4:Berenice,Hadriane,Cyrene,Apollonia,Hydrax
+Cyrene,4:Berenice,Hadriane,Cyrene,Apollonia_A,Hydrax
 Aegyptus,4:Paraetonium,Maerotis,Arsimoe,Antaepolis,Lycopolis
 Alexandria,1:Alexandria
 Thebais,1:Ptolemais,Theba
-Magna Africa,10:Tingis,Rusaddir,Pomaria,Volubillis,Cesarea,Utica,Cuicul,Auzia,Carthago,Gemellae,Amaedara,Zama,Hadrumetum,Thamugadi,Lambaesis,Ad Majores,Sabratha,Oea,Cydamus,Berenice,Hadriane,Cyrene,Apollonia,Hydrax,Paraetonium,Maerotis,Arsimoe,Antaepolis,Lycopolis,Alexandria,Ptolemais,Theba
+Magna Africa,10:Tingis,Rusaddir,Pomaria,Volubillis,Cesarea,Utica,Cuicul,Auzia,Carthago,Gemellae,Amaedara,Zama,Hadrumetum,Thamugadi,Lambaesis,Ad Majores,Sabratha,Oea,Cydamus,Berenice,Hadriane,Cyrene,Apollonia_A,Hydrax,Paraetonium,Maerotis,Arsimoe,Antaepolis,Lycopolis,Alexandria,Ptolemais,Theba
 
 Raetia,4:Cambodunum,Casta Regna,Curia,Augusta Vindelicorum,Casta Batava
 Noricum,1:Virunum,Lauriacum
@@ -53,14 +53,14 @@ Istria,2:Albona,Medullum,Tarsatica
 Moesia,4:Sopianae,Poetovio,Viminacium,Sirmium,Naissus
 Dalmatia,3:Lamatis,Salonae,Bistue Nova,Narona
 Dacia,5:Porolissum,Napoca,Praetoria Augusta,Apulum,Oescus,Sarmizegetusa
-Dacia minor,2:Tyras,Troesmis,Odessus
-Illyricum,7:Albona,Medullum,Tarsatica,Sopianae,Poetovio,Viminacium,Sirmium,Naissus,Lamatis,Salonae,Bistue Nova,Narona,Porolissum,Napoca,Praetoria Augusta,Apulum,Oescus,Sarmizegetusa,Tyras,Troesmis,Odessus
+Dacia minor,2:Tyras,Troesmis,Odessus_I
+Illyricum,7:Albona,Medullum,Tarsatica,Sopianae,Poetovio,Viminacium,Sirmium,Naissus,Lamatis,Salonae,Bistue Nova,Narona,Porolissum,Napoca,Praetoria Augusta,Apulum,Oescus,Sarmizegetusa,Tyras,Troesmis,Odessus_I
 
 Tracia,5:Serdica,Bagaraca,Delvetum,Philippolis,Hadrianopolis,Byzantium
-Macedonia,4:Dyrrhachium,Stobi,Plulippi,Apollonia,Pella
+Macedonia,4:Dyrrhachium,Stobi,Plulippi,Apollonia_M,Pella
 Achaia,4:Epirus,Thebes,Athens,Sparta,Olympia
 Creta,1:Gortyn,Irakleion
-Magna Macedonia,6:Serdica,Bagaraca,Delvetum,Philippolis,Hadrianopolis,Byzantium,Dyrrhachium,Stobi,Plulippi,Apollonia,Pella,Epirus,Thebes,Athens,Sparta,Olympia,Gortyn,Irakleion
+Magna Macedonia,6:Serdica,Bagaraca,Delvetum,Philippolis,Hadrianopolis,Byzantium,Dyrrhachium,Stobi,Plulippi,Apollonia_M,Pella,Epirus,Thebes,Athens,Sparta,Olympia,Gortyn,Irakleion
 
 Bithynia et Pontus,2:Bithynia,Paphlagonia,Pontus
 Asia,4:Mysia,Phrygia,Lydia,Caria,Lycia
@@ -83,7 +83,7 @@ Partha,7:Nisibis,Singara,Ciresium,Anatho,Birtha,Babylon,Rhaga,Gaetara,Zadracarta
 
 Sarmatia,3:Buri,Costoboci,Roloxani,Izayges
 
-Bosporanum,4:Odessus,Carcine,Exopolis,Hygris,Tanais,Pilana
+Bosporanum,4:Odessus_B,Carcine,Exopolis,Hygris,Tanais,Pilana
 
 Taurica,1:Taphra,Theordosia
 
@@ -93,7 +93,7 @@ Iberia,3:Phasis,Scanda,Idessaa,Artanissa
 
 Armenia,6:Chorzene,Tibium,Hispiratis,Amida,Tigranocerta,Caranitis,Percri,Artaxata
 
-Roman Republic,12:Lucentum,Toletum,Carthago Nova,Castulo,Emporion,Osca,Valentia_H,Tarraco,Baleares,Corsica,Tirris,Caralis,Roma,Carthago,Transpadana,Histria,Venetia,Taurinor,Etruria,Aemilia,Umbria,Latium,Picenum,Campania,Lucania,Brutii,Rhegium,Samnium,Tarantum,Lilybaeum,Messana,Syracuse,Epirus,Thebes,Athens,Sparta,Olympia,Dyrrhachium,Stobi,Plulippi,Apollonia,Pella,Gemellae,Amaedara,Zama,Lambaesis,Utica
+Roman Republic,12:Lucentum,Toletum,Carthago Nova,Castulo,Emporion,Osca,Valentia_H,Tarraco,Baleares,Corsica,Tirris,Caralis,Roma,Carthago,Transpadana,Histria,Venetia,Taurinor,Etruria,Aemilia,Umbria,Latium,Picenum,Campania,Lucania,Brutii,Rhegium,Samnium,Tarantum,Lilybaeum,Messana,Syracuse,Epirus,Thebes,Athens,Sparta,Olympia,Dyrrhachium,Stobi,Plulippi,Apollonia_M,Pella,Gemellae,Amaedara,Zama,Lambaesis,Utica
 Parthian Empire,12:Nisibis,Singara,Ciresium,Anatho,Birtha,Babylon,Rhaga,Gaetara,Zadracarta,Praaspa Vera,Gazaca,Ebatana,Hyrcania,Artemita,Celonoe,Opis,Dura,Sitace,Ctesiphon,Akula,Agra,Persepolis,Chorzene,Tibium,Hispiratis,Amida,Tigranocerta,Caranitis,Percri,Artaxata,Trapezus,Sebaste,Melitene,Mazaca,Anazarbus,Lycanitis,Seleucia,Tarsus,Ankyra,Lycaomun,Pamphylia,Antiochia,Heliopolis,Erag,Aramea,Cyprus,Damascus,Jerusalem
-Barbarian Chieftain,12:Buri,Costoboci,Roloxani,Izayges,Odessus,Carcine,Exopolis,Hygris,Tanais,Pilana,Taphra,Theordosia,Pitys,Dandari,Scymnia,Chebsonesus,Scandia,Codania,Saxsones,Istaevones,Teutones,Rugii,Lemovii,Gothones,Burgundi,Sulones,Saboci,Hermunduri,Burii,Capri,Quadi,Itius Portis,Bagacum,Ambriani,Bononia,Colonia Agrippina,Augusta Treviorum,Divodurum,Vesontio,Remi,Caledonia Superior,Caledonia Inferior,Vaspasiana,Darnini,Eridini,Eblani,Gangani
-Carthaginian Empire,12:Hispalis,Corduba,Astigi,Gades,Malaca,Carteia,Lucentum,Toletum,Carthago Nova,Castulo,Emporion,Osca,Valentia_H,Tarraco,Baleares,Tingis,Rusaddir,Pomaria,Volubillis,Cesarea,Utica,Cuicul,Auzia,Carthago,Gemellae,Amaedara,Zama,Hadrumetum,Thamugadi,Lambaesis,Ad Majores,Sabratha,Oea,Cydamus,Berenice,Hadriane,Cyrene,Apollonia,Hydrax,Corsica,Tirris,Caralis,Lilybaeum,Messana,Syracuse,Gortyn,Irakleion
+Barbarian Chieftain,12:Buri,Costoboci,Roloxani,Izayges,Odessus_B,Carcine,Exopolis,Hygris,Tanais,Pilana,Taphra,Theordosia,Pitys,Dandari,Scymnia,Chebsonesus,Scandia,Codania,Saxsones,Istaevones,Teutones,Rugii,Lemovii,Gothones,Burgundi,Sulones,Saboci,Hermunduri,Burii,Capri,Quadi,Itius Portis,Bagacum,Ambriani,Bononia,Colonia Agrippina,Augusta Treviorum,Divodurum,Vesontio,Remi,Caledonia Superior,Caledonia Inferior,Vaspasiana,Darnini,Eridini,Eblani,Gangani
+Carthaginian Empire,12:Hispalis,Corduba,Astigi,Gades,Malaca,Carteia,Lucentum,Toletum,Carthago Nova,Castulo,Emporion,Osca,Valentia_H,Tarraco,Baleares,Corsica,Tirris,Caralis,Tingis,Rusaddir,Pomaria,Volubillis,Cesarea,Utica,Cuicul,Auzia,Carthago,Gemellae,Amaedara,Zama,Hadrumetum,Thamugadi,Lambaesis,Ad Majores,Sabratha,Oea,Cydamus,Berenice,Hadriane,Cyrene,Apollonia_A,Hydrax,Lilybaeum,Messana,Syracuse,Gortyn,Irakleion
