@@ -54,6 +54,21 @@ class Game(object):
 
         self.__started = True
 
+    def player_controlled_bonus_groups (self, player):
+        player = self.get_player(player)
+        owned_territories = self.__player_territories[player.id]
+        return { bg for bg_name, bg in self.bonus_groups.items() if owned_territories.issuperset(bg.children) }
+
+    def calculate_players_reinforcements (self, player):
+        reinforcements = self.starting_troops
+        player = self.get_player(player)
+
+        owned_territories = self.__player_territories[player.id]
+        for bg in self.player_controlled_bonus_groups(player):
+            if owned_territories.issuperset(bg.children):
+                reinforcements += bg.value
+        return reinforcements
+
     def process_turn (self):
         pass
 
@@ -74,15 +89,8 @@ class Game(object):
             del self.__bonus_groups[bonus_group.name]
 
     def player_take_control_of (self, player, territory, new_troop_amount = None):
-        if player in self.players:
-            player = self.get_player(player)
-        elif type(player) != Player:
-            raise Exception("player must be either of type Player or a player_id")
-
-        if territory in self.territories:
-            territory = self.get_territory(territory)
-        elif type(territory) != Territory:
-            raise Exception("territory must be either of type Territory or a territory name")
+        player = self.get_player(player)
+        territory = self.get_territory(territory)
 
         # set owner
         territory.owner = player
@@ -95,17 +103,21 @@ class Game(object):
         if new_troop_amount is not None:
             territory.num_troops = new_troop_amount
 
-    def get_player (self, player_id):
-        if player_id in self.players:
-            return self.__players[player_id]
-        else:
-            raise Exception('player not found')
+    def get_player (self, player):
+        if player in self.players:
+            player = self.__players[player]
+        elif type(player) != Player:
+            raise Exception("player must be either of type Player or a player_id")
+
+        return player
 
     def get_territory (self, territory):
         if territory in self.territories:
-            return self.__territories[territory]
-        else:
-            raise Exception('territory not found')
+            territory = self.__territories[territory]
+        elif type(territory) != Territory:
+            raise Exception("territory must be either of type Territory or a territory name")
+
+        return territory
 
     @property
     def territories (self):
