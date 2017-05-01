@@ -22,3 +22,9 @@ class Player(object):
     @property
     def game (self):
         return self.__game
+
+    def __repr__ (self):
+        return str(self)
+
+    def __str__ (self):
+        return "<Player: {} id: {} color: {}>".format(self.__name,self.__id, self.__color)

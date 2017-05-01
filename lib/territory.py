@@ -66,4 +66,4 @@ class Territory(object):
         bg_str = ",".join([ x.name for x in self.__bonus_groups])
         if len(bg_str) >= 15:
             bg_str = "{}...".format(bg_str[:15])
-        return "<Node: {} Adj: [{}] Bonus Groups: [{}]>".format(self.__name,adj_str,bg_str)
+        return "<Node: {} Troops: {} Adj: [{}] Bonus Groups: [{}]>".format(self.__name,self.__num_troops,adj_str,bg_str)
