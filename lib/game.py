@@ -1,6 +1,9 @@
 from .player import Player
+from .territory import Territory
+import random
 class Game(object):
-    def __init__ (self):
+    def __init__ (self,seed=None,starting_troops=10):
+        random.seed(seed)
         player_1 = Player('Player 1','blue',self)
         player_2 = Player('Player 2','red',self)
         self.__players = { player_1.id : player_1, player_2.id : player_2 }
@@ -8,6 +11,7 @@ class Game(object):
         self.__started = False
         self.__territories = {}
         self.__bonus_groups = {}
+        self.__starting_troops = starting_troops
 
     def is_done (self):
         if not self.__started:
@@ -67,3 +71,7 @@ class Game(object):
     @property
     def player_territories (self):
         return self.__player_territories.copy()
+
+    @property
+    def starting_troops (self):
+        return self.__starting_troops
