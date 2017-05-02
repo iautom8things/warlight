@@ -19,8 +19,7 @@ class AttackMove(Move):
         self._from = _from
         self.validations.append(self.check_ownership)
         self.validations.append(self.check_amount)
-
-    # TODO CHECK ADJACENCY
+        self.validations.append(self.check_adjacency)
 
     def check_ownership (self, game):
         from_territory = game.get_territory(self._from)
@@ -32,6 +31,13 @@ class AttackMove(Move):
         if to_territory.owner == player:
             msg = 'player owns territory it is attacking ({},{})'
             return Exception(msg.format(player,to_territory))
+
+    def check_adjacency (self, game):
+        from_territory = game.get_territory(self._from)
+        to_territory = game.get_territory(self.to)
+        if to_territory not in from_territory.neighboors:
+            msg = 'territory must be adjacent to attack {} -> {}'
+            return Exception(msg.format(from_territory,to_territory))
 
     def check_amount (self, game):
         from_territory = game.get_territory(self._from)
