@@ -4,7 +4,7 @@ class Territory(object):
     def __init__ (self, name):
         self.__name = name
         self.__neighboors = set()
-        self.__num_troops = 0
+        self.__num_troops = 1
         self.__owner = None
         self.__bonus_groups = set()
 

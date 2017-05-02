@@ -1,4 +1,5 @@
 import uuid
+from .moves import AttackMove, TransferMove, PlacementMove
 
 class Player(object):
     def __init__ (self, name, color):

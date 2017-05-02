@@ -133,6 +133,27 @@ class Game(object):
         if new_troop_amount is not None:
             territory.num_troops = new_troop_amount
 
+    def get_player_territories (self, player):
+        player = self.get_player(player)
+        return self.player_territories[player.id]
+
+    def get_attackable_territories (self, player):
+        owned = self.get_player_territories(player)
+        all_neighboors = set()
+        for owned_t in owned:
+            all_neighboors = all_neighboors.union(owned_t.neighboors)
+
+        return all_neighboors - owned
+
+    def get_border_territories (self, player):
+        owned = self.get_player_territories(player)
+        border = set()
+        for owned_t in owned:
+            if owned_t.neighboors - owned:
+                border.add(owned_t)
+
+        return border
+
     def get_player (self, player):
         if player in self.players:
             player = self.__players[player]
