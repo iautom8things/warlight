@@ -61,10 +61,11 @@ from lib.game import Game
 from lib.player import Player
 from lib.territory import Territory
 from lib.bonusgroup import BonusGroup
+from lib.moves import AttackMove, PlacementMove, TransferMove
 
 g = Game(seed=42)
-player_1 = Player('Player 1','blue')
-player_2 = Player('Player 2','red')
+player_1 = Player('Player 1','orange')
+player_2 = Player('Player 2','yellow')
 g.add_player(player_1)
 g.add_player(player_2)
 

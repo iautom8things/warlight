@@ -1,6 +1,7 @@
 from .player import Player
 from .territory import Territory
 import random
+
 class Game(object):
     def __init__ (self,seed=None,starting_troops=10):
         random.seed(seed)
@@ -10,6 +11,7 @@ class Game(object):
         self.__territories = {}
         self.__bonus_groups = {}
         self.__starting_troops = starting_troops
+        self.__turn = 0
 
     def add_player (self, new_player):
         if self.__started:
@@ -59,6 +61,7 @@ class Game(object):
             start, end = end, end+num_init_territories
 
         self.__started = True
+        self.__turn += 1
 
     def player_controlled_bonus_groups (self, player):
         player = self.get_player(player)
@@ -76,7 +79,28 @@ class Game(object):
         return reinforcements
 
     def process_turn (self):
-        pass
+        print("## Turn {}".format(self.__turn))
+        # for each player, let them generate a move list
+        move_lists = { pid : player.generate_movelist(self) for pid, player in self.players.items() }
+        moves_left = True
+        print(move_lists)
+        while moves_left:
+            print("processing moves...")
+            moves_left = False
+            players = list(move_lists.keys())
+            random.shuffle(players)
+            print("order: {}".format(players))
+            for pid in players:
+                if not move_lists[pid]:
+                    continue
+                move = move_lists[pid].pop(0)
+                self.make_move(pid,move)
+                moves_left |= len(move_lists[pid]) > 0
+
+        self.__turn += 1
+
+    def make_move (self, pid, move):
+        print("making move for {}: --> {}".format(pid,move))
 
     def add_territory (self, territory):
         if territory.name not in self.__territories:

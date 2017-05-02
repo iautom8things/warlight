@@ -7,7 +7,7 @@ class Player(object):
         self.__color = color
 
     def generate_movelist (self,game):
-        return []
+        return list(self.__color)
 
     @property
     def id (self):
