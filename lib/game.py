@@ -4,14 +4,20 @@ import random
 class Game(object):
     def __init__ (self,seed=None,starting_troops=10):
         random.seed(seed)
-        player_1 = Player('Player 1','blue')
-        player_2 = Player('Player 2','red')
-        self.__players = { player_1.id : player_1, player_2.id : player_2 }
-        self.__player_territories = { player_1.id : set(), player_2.id : set() }
+        self.__players = {}
+        self.__player_territories = {}
         self.__started = False
         self.__territories = {}
         self.__bonus_groups = {}
         self.__starting_troops = starting_troops
+
+    def add_player (self, new_player):
+        if self.__started:
+            raise Exception('players cannot be added after game has started')
+        if type(new_player) != Player:
+            raise Exception('must provide Player object')
+        self.__players[new_player.id] = new_player
+        self.__player_territories[new_player.id] = set()
 
     def is_done (self):
         if not self.__started:

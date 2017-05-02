@@ -63,6 +63,10 @@ from lib.territory import Territory
 from lib.bonusgroup import BonusGroup
 
 g = Game(seed=42)
+player_1 = Player('Player 1','blue')
+player_2 = Player('Player 2','red')
+g.add_player(player_1)
+g.add_player(player_2)
 
 for t in adjmat:
     g.add_territory(Territory(t))
