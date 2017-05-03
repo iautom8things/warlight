@@ -86,3 +86,11 @@ for bg, data in bg_data.items():
 
 g.start_game(5)
 player_1, player_2 = g.players.keys()
+
+results = g.run_game()
+p1troops = [ x['players']['Player 1']['num_troops'] for x in results ]
+p2troops = [ x['players']['Player 2']['num_troops'] for x in results ]
+plt.clf()
+plt.plot(range(len(p1troops)),p1troops,color='blue')
+plt.plot(range(len(p1troops)),p2troops,color='red')
+plt.show()

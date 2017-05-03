@@ -73,29 +73,33 @@ class Game(object):
                 reinforcements += bg.value
         return int(reinforcements)
 
+    def run_game (self):
+        results = []
+        while not self.is_done():
+            result = self.process_turn()
+            results.append(result)
+        return results
+
     def process_turn (self):
         if self.is_done():
             print("Game has finished!  {} won!".format(self.__winner))
             return
 
-        print("## Turn {}".format(self.turn))
-
         turn_results = { 'turn': self.turn, 'players':{},'placements':[],'moves':[]}
         for p, player in self.players.items():
             num_reinforcements = self.calculate_players_reinforcements(player)
-            turn_results[player.name] = {'income':num_reinforcements}
-            print("  {} gets {} troops".format(player.name,num_reinforcements))
+            num_troops = self.count_troops(player)
+            num_territories = len(self.player_territories[p])
+            turn_results['players'][player.name] = {'income':num_reinforcements,'num_troops':num_troops,'num_territories':num_territories}
 
         # for each player, let them generate a move list
         move_lists = { pid : player.generate_movelist(self) for pid, player in self.players.items() }
 
-        print("--> Deployment phase")
         for pid, movelist in move_lists.items():
             for placement in movelist['placements']:
                 move_result = self.make_move(pid,placement)
                 turn_results['placements'].append(move_result)
 
-        print("--> Move phase")
         moves_left = True
         while moves_left:
             moves_left = False
@@ -115,6 +119,13 @@ class Game(object):
     def make_move (self, pid, move):
         result = move.execute(self)
         return result
+
+    def count_troops (self, player):
+        player = self.get_player(player)
+        troop_count = 0
+        for territory in self.player_territories[player.id]:
+            troop_count += territory.num_troops
+        return troop_count
 
     def add_territory (self, territory):
         if territory.name not in self.__territories:
