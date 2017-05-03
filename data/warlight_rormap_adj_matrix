@@ -133,9 +133,9 @@ Castulo:Toletum,Carthago Nova,Malaca,Astigi
 
 # Mauretania
 Tingis:Carteia,Rusaddir,Pomaria,Volubillis
-Rusaddir:Tingis,Cesarea,Auzia,Pomaria,Tingis
+Rusaddir:Tingis,Cesarea,Auzia,Pomaria
 Pomaria:Tingis,Rusaddir,Volubillis,Auzia
-Volubillis:Tingis,Rusaddir,Pomaria
+Volubillis:Tingis,Pomaria
 
 # Numidia
 Cesarea:Baleares,Utica,Cuicul,Auzia,Rusaddir
@@ -270,7 +270,7 @@ Byzantium:Plulippi,Hadrianopolis,Mysia
 # Macedonia
 Dyrrhachium:Narona,Philippolis,Stobi,Pella,Apollonia_M
 Stobi:Dyrrhachium,Philippolis,Plulippi,Pella
-Plulippi:Philippolis,Hadrianopolis,Byzantium,Pella
+Plulippi:Philippolis,Hadrianopolis,Byzantium,Pella,Stobi
 Apollonia_M:Dyrrhachium,Pella,Thebes,Epirus
 Pella:Dyrrhachium,Stobi,Plulippi,Thebes,Apollonia_M
 
@@ -311,8 +311,8 @@ Tarsus:Ankyra,Anazarbus,Lycanitis,Seleucia,Lycaomun
 # Cappadocia
 Trapezus:Pontus,Sebaste,Phasis
 Sebaste:Trapezus,Phasis,Scanda,Chorzene,Melitene,Pontus
-Melitene:Sebaste,Hispiratis,Mazaca,Lycanitis,Anazarbus,Pontus
-Mazaca:Melitene,Hispiratis,Nisibis,Erag,Heliopolis,Antiochia,Lycanitis
+Melitene:Sebaste,Hispiratis,Mazaca,Lycanitis,Anazarbus,Pontus,Chorzene
+Mazaca:Melitene,Hispiratis,Nisibis,Erag,Heliopolis,Antiochia,Lycanitis,Amida
 
 # Syria
 Antiochia:Lycanitis,Mazaca,Heliopolis,Cyprus
@@ -347,13 +347,13 @@ Babylon:Birtha,Opis,Sitace
 # Atropatene
 Rhaga:Tigranocerta,Percri,Gaetara,Zadracarta,Gazaca,Singara
 Gaetara:Artaxata,Percri,Rhaga,Zadracarta
-Zadracarta:Gaetara,Hyrcania,Ebatana,Praaspa Vera,Gazaca
+Zadracarta:Gaetara,Hyrcania,Ebatana,Praaspa Vera,Gazaca,Rhaga
 Praaspa Vera:Gazaca,Zadracarta,Ebatana,Dura,Opis
 Gazaca:Singara,Rhaga,Zadracarta,Praaspa Vera,Opis,Birtha,Ciresium
 
 # Media
 Ebatana:Zadracarta,Hyrcania,Artemita,Dura,Praaspa Vera
-Hyrcania:Zadracarta,Ebatana,Zadracarta,Hyrcania,Artemita,Dura,Praaspa Vera
+Hyrcania:Zadracarta,Ebatana,Artemita,Celonoe
 Artemita:Ebatana,Hyrcania,Celonoe,Ctesiphon,Dura
 Celonoe:Hyrcania,Artemita,Ctesiphon,Agra
 
