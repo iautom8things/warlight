@@ -79,15 +79,21 @@ class Game(object):
             return
 
         print("## Turn {}".format(self.turn))
+
+        turn_results = { 'turn': self.turn, 'players':{},'placements':[],'moves':[]}
         for p, player in self.players.items():
-            print ("  {} gets {} troops".format(player.name,self.calculate_players_reinforcements(player)))
+            num_reinforcements = self.calculate_players_reinforcements(player)
+            turn_results[player.name] = {'income':num_reinforcements}
+            print("  {} gets {} troops".format(player.name,num_reinforcements))
+
         # for each player, let them generate a move list
         move_lists = { pid : player.generate_movelist(self) for pid, player in self.players.items() }
 
         print("--> Deployment phase")
         for pid, movelist in move_lists.items():
             for placement in movelist['placements']:
-                self.make_move(pid,placement)
+                move_result = self.make_move(pid,placement)
+                turn_results['placements'].append(move_result)
 
         print("--> Move phase")
         moves_left = True
@@ -99,13 +105,16 @@ class Game(object):
                 if not move_lists[pid]['moves']:
                     continue
                 move = move_lists[pid]['moves'].pop(0)
-                self.make_move(pid,move)
+                move_result = self.make_move(pid,move)
+                turn_results['moves'].append(move_result)
                 moves_left |= len(move_lists[pid]['moves']) > 0
 
         self.__turn += 1
+        return turn_results
 
     def make_move (self, pid, move):
-        print(move.execute(self))
+        result = move.execute(self)
+        return result
 
     def add_territory (self, territory):
         if territory.name not in self.__territories:
