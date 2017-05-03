@@ -35,8 +35,8 @@ scores.sort(key=lambda x: x[1],reverse=True)
 just_scores = [ x[1] for x in scores ]
 
 # plot node scores
-plt.plot(just_scores)
-plt.ylabel('node scores')
+#plt.plot(just_scores)
+#plt.ylabel('node scores')
 #plt.show()
 
 # gen networkx graph
