@@ -78,7 +78,7 @@ class Game(object):
             print("Game has finished!  {} won!".format(self.__winner))
             return
 
-        print("## Turn {}".format(self.__turn))
+        print("## Turn {}".format(self.turn))
         for p, player in self.players.items():
             print ("  {} gets {} troops".format(player.name,self.calculate_players_reinforcements(player)))
         # for each player, let them generate a move list
@@ -194,3 +194,8 @@ class Game(object):
     @property
     def starting_troops (self):
         return self.__starting_troops
+
+    @property
+    def turn (self):
+        return self.__turn
+
