@@ -3,7 +3,7 @@ from .player import Player
 class Territory(object):
     def __init__ (self, name):
         self.__name = name
-        self.__neighboors = set()
+        self.__neighbors = set()
         self.__num_troops = 1
         self.__owner = None
         self.__bonus_groups = set()
@@ -17,20 +17,20 @@ class Territory(object):
             self.__bonus_groups.remove(bonus_group)
 
     def add_neighboor (self, territory):
-        if territory not in self.__neighboors:
-            self.__neighboors.add(territory)
+        if territory not in self.__neighbors:
+            self.__neighbors.add(territory)
 
     def remove_neighboor(self, territory):
-        if territory in self.__neighboors:
-            self.__neighboors.remove(territory)
+        if territory in self.__neighbors:
+            self.__neighbors.remove(territory)
 
     @property
     def name (self):
         return self.__name
 
     @property
-    def neighboors (self):
-        return self.__neighboors.copy()
+    def neighbors (self):
+        return self.__neighbors.copy()
 
     @property
     def num_troops (self):
@@ -60,7 +60,7 @@ class Territory(object):
         return str(self)
 
     def __str__ (self):
-        adj_str = ",".join([ x.name for x in self.__neighboors])
+        adj_str = ",".join([ x.name for x in self.__neighbors])
         if len(adj_str) >= 15:
             adj_str = "{}...".format(adj_str[:15])
         bg_str = ",".join([ x.name for x in self.__bonus_groups])

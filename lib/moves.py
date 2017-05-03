@@ -35,7 +35,7 @@ class AttackMove(Move):
     def check_adjacency (self, game):
         from_territory = game.get_territory(self._from)
         to_territory = game.get_territory(self.to)
-        if to_territory not in from_territory.neighboors:
+        if to_territory not in from_territory.neighbors:
             msg = 'territory must be adjacent to attack {} -> {}'
             return Exception(msg.format(from_territory,to_territory))
 
@@ -46,9 +46,12 @@ class AttackMove(Move):
             return Exception(msg.format(self.amount,from_territory))
 
     def execute(self, game):
-        self.validate(game)
+        player = game.get_player(self.player)
         from_territory = game.get_territory(self._from)
         to_territory = game.get_territory(self.to)
+        print("{} is attacking {} from {} with {} troops".format(player.name,to_territory.name,from_territory.name,self.amount))
+
+        self.validate(game)
 
         from_territory.num_troops -= self.amount
 
@@ -57,12 +60,20 @@ class AttackMove(Move):
 
         success = attacker_kills > to_territory.num_troops
         if success:
+            print("success")
             move_troops = self.amount - defend_kills
             game.player_take_control_of(self.player,to_territory,move_troops)
         else:
+            print("failed")
             to_territory.num_troops -= attacker_kills
             if self.amount > defend_kills:
                 from_territory.num_troops += self.amount - defend_kills
+
+    def __repr__ (self):
+        return str(self)
+
+    def __str__ (self):
+        return "<AttackMove: From: {} To: {} #: {} By: {}>".format(self._from,self.to,self.amount,self.player)
 
 class TransferMove(Move):
     def __init__ (self, _from, to, amount, player):
@@ -89,11 +100,21 @@ class TransferMove(Move):
             return Exception(msg.format(self.amount,from_territory))
 
     def execute(self, game):
-        self.validate(game)
+        player = game.get_player(self.player)
         from_territory = game.get_territory(self._from)
         to_territory = game.get_territory(self.to)
+        print("{} is transfering from {} to {} with {} troops".format(player.name,from_territory.name,to_territory.name,self.amount))
+
+        self.validate(game)
+
         from_territory.num_troops -= self.amount
         to_territory.num_troops += self.amount
+
+    def __repr__ (self):
+        return str(self)
+
+    def __str__ (self):
+        return "<TransferMove: From: {} To: {} #: {} By: {}>".format(self._from.name,self.to.name,self.amount,self.player)
 
 class PlacementMove(Move):
     def __init__ (self, to, amount, player):
@@ -102,8 +123,12 @@ class PlacementMove(Move):
         self.validations.append(self.check_amount)
 
     def execute(self, game):
-        self.validate(game)
+        player = game.get_player(self.player)
         to_territory = game.get_territory(self.to)
+        print("{} is placing  {} troops to {}".format(player.name,self.amount,to_territory.name))
+
+        self.validate(game)
+
         to_territory.num_troops += self.amount
 
     def check_ownership (self, game):
@@ -119,3 +144,8 @@ class PlacementMove(Move):
             msg = 'not enough reinforcements ({})'
             return Exception(msg.format(self.amount))
 
+    def __repr__ (self):
+        return str(self)
+
+    def __str__ (self):
+        return "<PlacementMove: To: {} #: {} By: {}>".format(self.to,self.amount,self.player)

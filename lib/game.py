@@ -3,7 +3,7 @@ from .territory import Territory
 import random
 
 class Game(object):
-    def __init__ (self,seed=None,starting_troops=10):
+    def __init__ (self,seed=None,starting_troops=10,adjmat=None):
         random.seed(seed)
         self.__players = {}
         self.__player_territories = {}
@@ -12,6 +12,8 @@ class Game(object):
         self.__bonus_groups = {}
         self.__starting_troops = starting_troops
         self.__turn = 0
+        self.__eliminated_players = set()
+        self.adjmat = adjmat
 
     def add_player (self, new_player):
         if self.__started:
@@ -25,25 +27,18 @@ class Game(object):
         if not self.__started:
             return False
 
-        result = False
-        for p, ts in self.__player_territories.items():
-            if len(ts) == 0:
-                result = True
-        return result
-
-    def winner (self):
-        if not self.__started:
-            return None
-
         still_playing = []
         for p, ts in self.__player_territories.items():
-            if len(ts) > 0:
+            if len(ts) == 0:
+                self.__eliminated_players.add(p)
+            else:
                 still_playing.append(p)
 
-        winner = None
-        if len(still_playing) == 1:
-            winner = still_playing[0]
-        return winner
+        game_over = len(self.__eliminated_players) == len(self.__players)-1
+        if game_over:
+            self.__winner = self.__players[still_playing[0]]
+
+        return game_over
 
     def start_game (self, num_init_territories):
         if self.__started:
@@ -76,31 +71,40 @@ class Game(object):
         for bg in self.player_controlled_bonus_groups(player):
             if owned_territories.issuperset(bg.children):
                 reinforcements += bg.value
-        return reinforcements
+        return int(reinforcements)
 
     def process_turn (self):
+        if self.is_done():
+            print("Game has finished!  {} won!".format(self.__winner))
+            return
+
         print("## Turn {}".format(self.__turn))
+        for p, player in self.players.items():
+            print ("  {} gets {} troops".format(player.name,self.calculate_players_reinforcements(player)))
         # for each player, let them generate a move list
         move_lists = { pid : player.generate_movelist(self) for pid, player in self.players.items() }
+
+        print("--> Deployment phase")
+        for pid, movelist in move_lists.items():
+            for placement in movelist['placements']:
+                self.make_move(pid,placement)
+
+        print("--> Move phase")
         moves_left = True
-        print(move_lists)
         while moves_left:
-            print("processing moves...")
             moves_left = False
             players = list(move_lists.keys())
             random.shuffle(players)
-            print("order: {}".format(players))
             for pid in players:
-                if not move_lists[pid]:
+                if not move_lists[pid]['moves']:
                     continue
-                move = move_lists[pid].pop(0)
+                move = move_lists[pid]['moves'].pop(0)
                 self.make_move(pid,move)
-                moves_left |= len(move_lists[pid]) > 0
+                moves_left |= len(move_lists[pid]['moves']) > 0
 
         self.__turn += 1
 
     def make_move (self, pid, move):
-        print("making move for {}: --> {}".format(pid,move))
         move.execute(self)
 
     def add_territory (self, territory):
@@ -140,17 +144,17 @@ class Game(object):
 
     def get_attackable_territories (self, player):
         owned = self.get_player_territories(player)
-        all_neighboors = set()
+        all_neighbors = set()
         for owned_t in owned:
-            all_neighboors = all_neighboors.union(owned_t.neighboors)
+            all_neighbors = all_neighbors.union(owned_t.neighbors)
 
-        return all_neighboors - owned
+        return all_neighbors - owned
 
     def get_border_territories (self, player):
         owned = self.get_player_territories(player)
         border = set()
         for owned_t in owned:
-            if owned_t.neighboors - owned:
+            if owned_t.neighbors - owned:
                 border.add(owned_t)
 
         return border

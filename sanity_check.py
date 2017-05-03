@@ -63,9 +63,11 @@ from lib.territory import Territory
 from lib.bonusgroup import BonusGroup
 from lib.moves import AttackMove, PlacementMove, TransferMove
 
-g = Game(seed=42)
+g = Game(seed=42,adjmat=adjmat)
 player_1 = Player('Player 1','orange')
 player_2 = Player('Player 2','yellow')
+from lib.strategy import Greedy
+player_1.strategy = Greedy()
 g.add_player(player_1)
 g.add_player(player_2)
 
