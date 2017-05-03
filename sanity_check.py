@@ -37,22 +37,13 @@ just_scores = [ x[1] for x in scores ]
 # plot node scores
 plt.plot(just_scores)
 plt.ylabel('node scores')
-plt.show()
-
+#plt.show()
 
 # gen networkx graph
 G = nx.Graph()
-edge_list = []
 for k, data in adjmat.items():
     for n in data['adj_nodes']:
         G.add_edge(k,n)
-        edge_list.append((k,n))
-
-graph_pos = nx.spectral_layout(G)
-nx.draw_networkx_nodes(G,graph_pos, node_size=10, node_color='blue', alpha=0.3)
-nx.draw_networkx_edges(G,graph_pos)
-nx.draw_networkx_labels(G,graph_pos, font_size=8, font_family='sans-serif')
-plt.show()
 
 degree_centrality = nx.degree_centrality(G)
 betweenness_centrality = nx.betweenness_centrality(G)
@@ -64,8 +55,8 @@ from lib.bonusgroup import BonusGroup
 from lib.moves import AttackMove, PlacementMove, TransferMove
 
 g = Game(seed=42,adjmat=adjmat)
-player_1 = Player('Player 1','orange')
-player_2 = Player('Player 2','yellow')
+player_1 = Player('Player 1','red')
+player_2 = Player('Player 2','blue')
 from lib.strategy import Greedy
 player_1.strategy = Greedy()
 g.add_player(player_1)
@@ -90,7 +81,11 @@ player_1, player_2 = g.players.keys()
 results = g.run_game()
 p1troops = [ x['players']['Player 1']['num_troops'] for x in results ]
 p2troops = [ x['players']['Player 2']['num_troops'] for x in results ]
-plt.clf()
-plt.plot(range(len(p1troops)),p1troops,color='blue')
-plt.plot(range(len(p1troops)),p2troops,color='red')
-plt.show()
+#plt.clf()
+#plt.plot(range(len(p1troops)),p1troops,color='blue')
+#plt.plot(range(len(p1troops)),p2troops,color='red')
+#plt.clf()
+#plt.show()
+
+#plt.show()
+

@@ -1,10 +1,15 @@
 from .player import Player
 from .territory import Territory
 import random
+import networkx as nx
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
 
 class Game(object):
     def __init__ (self,seed=None,starting_troops=10,adjmat=None):
         random.seed(seed)
+        self.__start_time = datetime.now()
         self.__players = {}
         self.__player_territories = {}
         self.__started = False
@@ -14,6 +19,34 @@ class Game(object):
         self.__turn = 0
         self.__eliminated_players = set()
         self.adjmat = adjmat
+        self.__G = nx.Graph()
+        for k, data in adjmat.items():
+            for n in data['adj_nodes']:
+                self.__G.add_edge(k,n)
+        self.__output_dir = 'fig/{}'.format(self.__start_time)
+
+
+    def __draw_map (self):
+        graph_pos = nx.spectral_layout(self.__G)
+        neutral = [ x.name for x in self.get_neutral_territories() ]
+        nx.draw_networkx_nodes(self.__G,graph_pos, node_size=1, node_color='grey', alpha=0.3,nodelist=neutral)
+        for p, player in self.players.items():
+            nodes = [ (x.name,x.num_troops) for x in self.get_player_territories(player)]
+            names = [ x[0] for x in nodes ]
+            sizes = [ x[1] for x in nodes ]
+            nx.draw_networkx_nodes(self.__G,graph_pos, node_size=sizes, node_color=player.color, alpha=0.3,nodelist=names)
+        nx.draw_networkx_edges(self.__G,graph_pos, alpha=0.2)
+        if self.is_done():
+            name = 'game_over'
+        else:
+            name = 'turn_{}'.format(self.__turn)
+
+        if not os.path.isdir(self.__output_dir):
+            os.mkdir(self.__output_dir)
+        fname = '{}.png'.format(name)
+        output = os.path.join(self.__output_dir,fname)
+        plt.savefig(output)
+        plt.clf()
 
     def add_player (self, new_player):
         if self.__started:
@@ -76,8 +109,10 @@ class Game(object):
     def run_game (self):
         results = []
         while not self.is_done():
+            self.__draw_map()
             result = self.process_turn()
             results.append(result)
+        self.__draw_map()
         return results
 
     def process_turn (self):
@@ -161,6 +196,10 @@ class Game(object):
     def get_player_territories (self, player):
         player = self.get_player(player)
         return self.player_territories[player.id]
+
+    def get_neutral_territories (self):
+        neutral = { territory for name, territory in self.territories.items() if territory.owner is None }
+        return neutral
 
     def get_attackable_territories (self, player):
         owned = self.get_player_territories(player)
