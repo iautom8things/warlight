@@ -105,7 +105,7 @@ class Game(object):
         self.__turn += 1
 
     def make_move (self, pid, move):
-        move.execute(self)
+        print(move.execute(self))
 
     def add_territory (self, territory):
         if territory.name not in self.__territories:

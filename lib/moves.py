@@ -49,25 +49,41 @@ class AttackMove(Move):
         player = game.get_player(self.player)
         from_territory = game.get_territory(self._from)
         to_territory = game.get_territory(self.to)
-        print("{} is attacking {} from {} with {} troops".format(player.name,to_territory.name,from_territory.name,self.amount))
 
         self.validate(game)
 
         from_territory.num_troops -= self.amount
+        num_attacking = self.amount
+        num_defending = to_territory.num_troops
 
-        attacker_kills = round(self.amount*ATTACK_KILL_PROB)
-        defend_kills = round(to_territory.num_troops*DEFEND_KILL_PROB)
+        attacker_kill_potential = round(num_attacking*ATTACK_KILL_PROB)
+        defender_kill_potential = round(num_defending*DEFEND_KILL_PROB)
 
-        success = attacker_kills > to_territory.num_troops
+        attacker_kills = min(attacker_kill_potential,to_territory.num_troops)
+        defender_kills = min(defender_kill_potential,num_attacking)
+
+        success = attacker_kill_potential > to_territory.num_troops
         if success:
-            print("success")
-            move_troops = self.amount - defend_kills
+            move_troops = self.amount - defender_kills
             game.player_take_control_of(self.player,to_territory,move_troops)
         else:
-            print("failed")
             to_territory.num_troops -= attacker_kills
-            if self.amount > defend_kills:
-                from_territory.num_troops += self.amount - defend_kills
+            if self.amount > defender_kills:
+                from_territory.num_troops += self.amount - defender_kills
+
+        result = {
+                    'player': player.name,
+                    'type': 'attack',
+                    'from': from_territory.name,
+                    'to': to_territory.name,
+                    'defending_player': to_territory.owner.name or 'no one',
+                    'attacking': num_attacking,
+                    'defending': num_defending,
+                    'attacker_kills': attacker_kills,
+                    'defender_kills': defender_kills,
+                    'success': success
+                }
+        return result
 
     def __repr__ (self):
         return str(self)
@@ -103,12 +119,27 @@ class TransferMove(Move):
         player = game.get_player(self.player)
         from_territory = game.get_territory(self._from)
         to_territory = game.get_territory(self.to)
-        print("{} is transfering from {} to {} with {} troops".format(player.name,from_territory.name,to_territory.name,self.amount))
 
         self.validate(game)
 
+        from_starting = from_territory.num_troops
+        to_starting = to_territory.num_troops
+
         from_territory.num_troops -= self.amount
         to_territory.num_troops += self.amount
+
+        result = {
+                    'player': player.name,
+                    'type': 'transfer',
+                    'from': from_territory.name,
+                    'to': to_territory.name,
+                    'amount': self.amount,
+                    'from_starting': from_starting,
+                    'to_starting': to_starting,
+                    'from_ending': from_territory.num_troops,
+                    'to_ending': to_territory.num_troops,
+                }
+        return result
 
     def __repr__ (self):
         return str(self)
@@ -125,11 +156,21 @@ class PlacementMove(Move):
     def execute(self, game):
         player = game.get_player(self.player)
         to_territory = game.get_territory(self.to)
-        print("{} is placing  {} troops to {}".format(player.name,self.amount,to_territory.name))
 
         self.validate(game)
 
+        to_starting = to_territory.num_troops
         to_territory.num_troops += self.amount
+
+        result = {
+                    'player': player.name,
+                    'type': 'placement',
+                    'to': to_territory.name,
+                    'amount': self.amount,
+                    'to_starting': to_starting,
+                    'to_ending': to_territory.num_troops,
+                }
+        return result
 
     def check_ownership (self, game):
         to_territory = game.get_territory(self.to)
