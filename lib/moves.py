@@ -13,6 +13,18 @@ class Move():
             if issue:
                 raise issue
 
+class InvalidOwnershipException(Exception):
+    pass
+
+class LawsOfPhysicsException(Exception):
+    pass
+
+class InsufficientTroopsException(Exception):
+    pass
+
+class NoLongerAttackableException(Exception):
+    pass
+
 class AttackMove(Move):
     def __init__ (self, _from, to, amount, player):
         super().__init__(to,amount,player)
@@ -27,30 +39,50 @@ class AttackMove(Move):
         player = game.get_player(self.player)
         if from_territory.owner != player:
             msg = 'player does not own attacking territory ({},{})'
-            return Exception(msg.format(player,from_territory))
+            return InvalidOwnershipException(msg.format(player,from_territory))
         if to_territory.owner == player:
             msg = 'player owns territory it is attacking ({},{})'
-            return Exception(msg.format(player,to_territory))
+            return NoLongerAttackableException(msg.format(player,to_territory))
 
     def check_adjacency (self, game):
         from_territory = game.get_territory(self._from)
         to_territory = game.get_territory(self.to)
         if to_territory not in from_territory.neighbors:
             msg = 'territory must be adjacent to attack {} -> {}'
-            return Exception(msg.format(from_territory,to_territory))
+            return LawsOfPhysicsException(msg.format(from_territory,to_territory))
 
     def check_amount (self, game):
         from_territory = game.get_territory(self._from)
-        if self.amount > from_territory.num_troops-1:
+        if from_territory.num_troops < 2:
             msg = 'not enough troops ({},{})'
-            return Exception(msg.format(self.amount,from_territory))
+            return InsufficientTroopsException(msg.format(self.amount,from_territory))
+        elif self.amount > from_territory.num_troops-1:
+            self.amount = from_territory.num_troops-1
 
     def execute(self, game):
         player = game.get_player(self.player)
         from_territory = game.get_territory(self._from)
         to_territory = game.get_territory(self.to)
 
-        self.validate(game)
+        defender = 'no one'
+        if to_territory.owner:
+            defender = to_territory.owner.name
+
+        try:
+            self.validate(game)
+        except NoLongerAttackableException:
+            return TransferMove(from_territory,to_territory,self.amount,player).execute(game)
+        except InsufficientTroopsException:
+            result = {
+                        'player': player.name,
+                        'type': 'attack',
+                        'from': from_territory.name,
+                        'to': to_territory.name,
+                        'defending_player': defender,
+                        'reason': 'insufficient troops',
+                        'success': False
+                    }
+            return result
 
         from_territory.num_troops -= self.amount
         num_attacking = self.amount
@@ -76,7 +108,7 @@ class AttackMove(Move):
                     'type': 'attack',
                     'from': from_territory.name,
                     'to': to_territory.name,
-                    'defending_player': to_territory.owner.name or 'no one',
+                    'defending_player': defender,
                     'attacking': num_attacking,
                     'defending': num_defending,
                     'attacker_kills': attacker_kills,
@@ -111,9 +143,11 @@ class TransferMove(Move):
 
     def check_amount (self, game):
         from_territory = game.get_territory(self._from)
-        if self.amount > from_territory.num_troops-1:
+        if from_territory.num_troops < 2:
             msg = 'not enough troops ({},{})'
-            return Exception(msg.format(self.amount,from_territory))
+            return InsufficientTroopsException(msg.format(self.amount,from_territory))
+        elif self.amount > from_territory.num_troops-1:
+            self.amount = from_territory.num_troops-1
 
     def execute(self, game):
         player = game.get_player(self.player)
