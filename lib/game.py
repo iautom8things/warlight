@@ -124,9 +124,15 @@ class Game(object):
 
         for key in ['num_troops','num_territories','income']:
             plt.clf()
+            plt.xlabel('turns')
+            plt.ylabel(key)
+            plt.title('{} over game'.format(key))
+            lines = []
             for pid, player in self.players.items():
                 points = [ x['players'][player.name][key] for x in results ]
-                plt.plot(range(len(points)),points,color=player.color)
+                line, = plt.plot(range(len(points)),points,color=player.color,label=str(player.strategy))
+                lines.append(line)
+            plt.legend(handles=lines)
 
             fname = '{}.png'.format(key)
             output = os.path.join(self.__output_dir,fname)
