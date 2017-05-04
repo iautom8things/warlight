@@ -1,7 +1,14 @@
 from .moves import AttackMove, TransferMove, PlacementMove
 import random
 
-class Greedy(object):
+class Strategy(object):
+    def __repr__ (self):
+        return str(self)
+
+    def __str__ (self):
+        return self.__class__.__name__
+
+class Greedy(Strategy):
     def generate_movelist(self, game, player):
         reinforcements = game.calculate_players_reinforcements(player)
         owned = game.get_player_territories(player)
@@ -19,7 +26,7 @@ class Greedy(object):
                    'moves': [ AttackMove(attack_source,target,attack_force,player) ] }
         return moves
 
-class Opportunistic(object):
+class Opportunistic(Strategy):
     def generate_movelist(self, game, player):
         reinforcements = game.calculate_players_reinforcements(player)
         owned = game.get_player_territories(player)
@@ -55,7 +62,7 @@ class Opportunistic(object):
         moves = { 'placements': placements, 'moves': attacks }
         return moves
 
-class Horder(object):
+class Horder(Strategy):
     def generate_movelist(self, game, player):
         max_reinforcements = game.calculate_players_reinforcements(player)
         owned = game.get_player_territories(player)
