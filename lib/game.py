@@ -34,23 +34,37 @@ class Game(object):
         if not self.draw_graphs:
             return
 
+        plt.clf()
+        f = plt.figure(1)
+        ax = f.add_subplot(1,1,1)
+
         graph_pos = nx.spectral_layout(self.__G)
         neutral = [ x.name for x in self.get_neutral_territories() ]
-        nx.draw_networkx_nodes(self.__G,graph_pos, node_size=1, node_color='grey', alpha=0.3,nodelist=neutral)
+        nx.draw_networkx_nodes(self.__G,graph_pos, node_size=1, node_color='grey', alpha=0.3,nodelist=neutral,ax=ax)
         for p, player in self.players.items():
             nodes = [ (x.name,x.num_troops) for x in self.get_player_territories(player)]
             names = [ x[0] for x in nodes ]
             sizes = [ x[1] for x in nodes ]
-            nx.draw_networkx_nodes(self.__G,graph_pos, node_size=sizes, node_color=player.color, alpha=0.5,nodelist=names)
-        nx.draw_networkx_edges(self.__G,graph_pos, alpha=0.1)
+            num_territories = len(self.get_player_territories(p))
+            num_troops = self.count_troops(p)
+            num_reinforcements = self.calculate_players_reinforcements(p)
+            label = '{} (n:{},t:{},i:{})'.format(player.strategy,num_territories,num_troops,num_reinforcements)
+            ax.plot([0],[0],color=player.color,label=label)
+            nx.draw_networkx_nodes(self.__G,graph_pos, node_size=sizes, node_color=player.color, alpha=0.5,nodelist=names,ax=ax)
+        nx.draw_networkx_edges(self.__G,graph_pos, alpha=0.1,ax=ax)
         if self.is_done():
-            name = 'game_over'
+            name = 'turn_game_over'
         else:
             name = 'turn_{}'.format(self.__turn)
 
         fname = '{}.png'.format(name)
         output = os.path.join(self.__output_dir,fname)
-        plt.savefig(output,dpi=450)
+
+        plt.title(name)
+        plt.axis('off')
+        f.set_facecolor('w')
+        plt.legend()
+        plt.savefig(output,dpi=300)
         plt.clf()
 
     def add_player (self, new_player):
@@ -136,7 +150,7 @@ class Game(object):
 
             fname = '{}.png'.format(key)
             output = os.path.join(self.__output_dir,fname)
-            plt.savefig(output,dpi=450)
+            plt.savefig(output,dpi=300)
             plt.clf()
 
         return results
