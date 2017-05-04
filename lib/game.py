@@ -4,6 +4,7 @@ import random
 import networkx as nx
 import matplotlib.pyplot as plt
 import os
+import json
 from datetime import datetime
 
 class Game(object):
@@ -34,8 +35,8 @@ class Game(object):
             nodes = [ (x.name,x.num_troops) for x in self.get_player_territories(player)]
             names = [ x[0] for x in nodes ]
             sizes = [ x[1] for x in nodes ]
-            nx.draw_networkx_nodes(self.__G,graph_pos, node_size=sizes, node_color=player.color, alpha=0.3,nodelist=names)
-        nx.draw_networkx_edges(self.__G,graph_pos, alpha=0.2)
+            nx.draw_networkx_nodes(self.__G,graph_pos, node_size=sizes, node_color=player.color, alpha=0.5,nodelist=names)
+        nx.draw_networkx_edges(self.__G,graph_pos, alpha=0.1)
         if self.is_done():
             name = 'game_over'
         else:
@@ -45,7 +46,7 @@ class Game(object):
             os.mkdir(self.__output_dir)
         fname = '{}.png'.format(name)
         output = os.path.join(self.__output_dir,fname)
-        plt.savefig(output)
+        plt.savefig(output,dpi=450)
         plt.clf()
 
     def add_player (self, new_player):
@@ -113,6 +114,21 @@ class Game(object):
             result = self.process_turn()
             results.append(result)
         self.__draw_map()
+        output = os.path.join(self.__output_dir,'movelist')
+        with open(output,'w') as f:
+            f.write("\n".join([ json.dumps(x) for x in results ]))
+
+        for key in ['num_troops','num_territories','income']:
+            plt.clf()
+            for pid, player in self.players.items():
+                points = [ x['players'][player.name][key] for x in results ]
+                plt.plot(range(len(points)),points,color=player.color)
+
+            fname = '{}.png'.format(key)
+            output = os.path.join(self.__output_dir,fname)
+            plt.savefig(output,dpi=450)
+            plt.clf()
+
         return results
 
     def process_turn (self):
@@ -188,7 +204,7 @@ class Game(object):
         # ensure territory is not owned by other players
         for pid, territories in self.__player_territories.items():
             if territory in territories and pid != player.id:
-                territories.remove(territory)
+                self.__player_territories[pid].remove(territory)
 
         if new_troop_amount is not None:
             territory.num_troops = new_troop_amount

@@ -72,6 +72,18 @@ class AttackMove(Move):
             self.validate(game)
         except NoLongerAttackableException:
             return TransferMove(from_territory,to_territory,self.amount,player).execute(game)
+        except InvalidOwnershipException:
+            result = {
+                        'player': player.name,
+                        'type': 'attack',
+                        'from': from_territory.name,
+                        'to': to_territory.name,
+                        'defending_player': defender,
+                        'reason': 'source no longer owned',
+                        'success': False
+                    }
+            return result
+
         except InsufficientTroopsException:
             result = {
                         'player': player.name,
