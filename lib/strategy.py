@@ -11,7 +11,6 @@ class Strategy(object):
 class Greedy(Strategy):
     def generate_movelist(self, game, player):
         reinforcements = game.calculate_players_reinforcements(player)
-        owned = game.get_player_territories(player)
         border = game.get_border_territories(player)
         attackable = game.get_attackable_territories(player)
         scores = [ (x,game.adjmat[x.name]['value']) for x in attackable ]
@@ -19,7 +18,7 @@ class Greedy(Strategy):
         scores.sort(key=lambda x: x[1],reverse=True)
         target, score = scores[0]
 
-        attack_source = list(target.neighbors.intersection(owned))[0]
+        attack_source = list(target.neighbors.intersection(border))[0]
         attack_force = reinforcements + attack_source.num_troops - 1
 
         moves = { 'placements': [ PlacementMove(attack_source,reinforcements,player) ],
@@ -29,7 +28,6 @@ class Greedy(Strategy):
 class Opportunistic(Strategy):
     def generate_movelist(self, game, player):
         reinforcements = game.calculate_players_reinforcements(player)
-        owned = game.get_player_territories(player)
         border = game.get_border_territories(player)
         attackable = game.get_attackable_territories(player)
         attackable_by_troops = [ x for x in attackable ]
@@ -40,7 +38,7 @@ class Opportunistic(Strategy):
         for t in attackable_by_troops:
             if reinforcements < 1:
                 break
-            sources = list(owned.intersection(t.neighbors))
+            sources = list(border.intersection(t.neighbors))
             sources.sort(key=lambda x: x.num_troops,reverse=True)
             source = sources[0]
             needs = 0
