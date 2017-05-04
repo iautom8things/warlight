@@ -8,34 +8,18 @@ class Strategy(object):
     def __str__ (self):
         return self.__class__.__name__
 
-class Greedy(Strategy):
+    def __sort (self, attackable, game, player):
+        return list(attackable)
+
     def generate_movelist(self, game, player):
         reinforcements = game.calculate_players_reinforcements(player)
         border = game.get_border_territories(player)
         attackable = game.get_attackable_territories(player)
-        scores = [ (x,game.adjmat[x.name]['value']) for x in attackable ]
+        attack_order = self.__sort(attackable,game,player)
 
-        scores.sort(key=lambda x: x[1],reverse=True)
-        target, score = scores[0]
-
-        attack_source = list(target.neighbors.intersection(border))[0]
-        attack_force = reinforcements + attack_source.num_troops - 1
-
-        moves = { 'placements': [ PlacementMove(attack_source,reinforcements,player) ],
-                   'moves': [ AttackMove(attack_source,target,attack_force,player) ] }
-        return moves
-
-class Opportunistic(Strategy):
-    def generate_movelist(self, game, player):
-        reinforcements = game.calculate_players_reinforcements(player)
-        border = game.get_border_territories(player)
-        attackable = game.get_attackable_territories(player)
-        attackable_by_troops = [ x for x in attackable ]
-
-        attackable_by_troops.sort(key=lambda x: x.num_troops)
         placements = []
         attacks = []
-        for t in attackable_by_troops:
+        for t in attack_order:
             if reinforcements < 1:
                 break
             sources = list(border.intersection(t.neighbors))
@@ -59,6 +43,30 @@ class Opportunistic(Strategy):
 
         moves = { 'placements': placements, 'moves': attacks }
         return moves
+
+class IncomeGreedy(Strategy):
+    def __sort (self, attackable, game, player):
+        attackable = list(attackable)
+        attackable.sort(key=lambda x: game.adjmat[x.name]['value'],reverse=True)
+        return attackable
+
+class BetweennessGreedy(Strategy):
+    def __sort (self, attackable, game, player):
+        attackable = list(attackable)
+        attackable.sort(key=lambda x: game.adjmat[x.name]['betweenness'],reverse=True)
+        return attackable
+
+class DegreeGreedy(Strategy):
+    def __sort (self, attackable, game, player):
+        attackable = list(attackable)
+        attackable.sort(key=lambda x: game.adjmat[x.name]['degree'],reverse=True)
+        return attackable
+
+class Opportunistic(Strategy):
+    def __sort (self, attackable, game, player):
+        attackable = list(attackable)
+        attackable.sort(key=lambda x: x.num_troops)
+        return attackable
 
 class Horder(Strategy):
     def generate_movelist(self, game, player):

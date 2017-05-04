@@ -57,14 +57,23 @@ from lib.moves import AttackMove, PlacementMove, TransferMove
 g = Game(adjmat=adjmat,draw_graphs=True)
 player_1 = Player('Player 1','green')
 player_2 = Player('Player 2','purple')
-from lib.strategy import Greedy,Opportunistic
-player_1.strategy = Opportunistic()
+player_3 = Player('Player 3','red')
+player_4 = Player('Player 4','blue')
+from lib.strategy import IncomeGreedy, BetweennessGreedy, DegreeGreedy, Opportunistic
+player_1.strategy = BetweennessGreedy()
 player_2.strategy = Opportunistic()
+player_3.strategy = DegreeGreedy()
+player_4.strategy = IncomeGreedy()
 g.add_player(player_1)
 g.add_player(player_2)
+g.add_player(player_3)
+g.add_player(player_4)
 
 for t in adjmat:
+    adjmat[t]['betweenness'] = betweenness_centrality[t]
+    adjmat[t]['degree'] = degree_centrality[t]
     g.add_territory(Territory(t))
+
 
 for t, data in adjmat.items():
     for n in data['adj_nodes']:
@@ -77,6 +86,5 @@ for bg, data in bg_data.items():
     g.add_bonus_group(bg_obj)
 
 g.start_game(5)
-player_1, player_2 = g.players.keys()
 
 results = g.run_game()

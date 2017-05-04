@@ -168,7 +168,7 @@ class Game(object):
             turn_results['players'][player.name] = {'income':num_reinforcements,'num_troops':num_troops,'num_territories':num_territories,'strategy':str(player.strategy)}
 
         # for each player, let them generate a move list
-        move_lists = { pid : player.generate_movelist(self) for pid, player in self.players.items() }
+        move_lists = { pid : player.generate_movelist(self) for pid, player in self.players.items() if self.is_player_playing(pid) }
 
         for pid, movelist in move_lists.items():
             for placement in movelist['placements']:
@@ -274,6 +274,9 @@ class Game(object):
 
         return territory
 
+    def is_player_playing (self, player):
+        player = self.get_player(player)
+        return len(self.get_player_territories(player)) > 0
     @property
     def territories (self):
         return self.__territories.copy()
