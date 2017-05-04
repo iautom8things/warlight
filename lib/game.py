@@ -165,7 +165,7 @@ class Game(object):
             num_reinforcements = self.calculate_players_reinforcements(player)
             num_troops = self.count_troops(player)
             num_territories = len(self.player_territories[p])
-            turn_results['players'][player.name] = {'income':num_reinforcements,'num_troops':num_troops,'num_territories':num_territories}
+            turn_results['players'][player.name] = {'income':num_reinforcements,'num_troops':num_troops,'num_territories':num_territories,'strategy':str(player.strategy)}
 
         # for each player, let them generate a move list
         move_lists = { pid : player.generate_movelist(self) for pid, player in self.players.items() }
