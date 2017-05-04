@@ -8,7 +8,7 @@ import json
 from datetime import datetime
 
 class Game(object):
-    def __init__ (self,seed=None,starting_troops=10,adjmat=None):
+    def __init__ (self,seed=None,starting_troops=10,adjmat=None,draw_graphs=False):
         random.seed(seed)
         self.__start_time = datetime.now()
         self.__players = {}
@@ -21,13 +21,19 @@ class Game(object):
         self.__eliminated_players = set()
         self.adjmat = adjmat
         self.__G = nx.Graph()
+        self.__draw_graphs = draw_graphs
         for k, data in adjmat.items():
             for n in data['adj_nodes']:
                 self.__G.add_edge(k,n)
         self.__output_dir = 'fig/{}'.format(self.__start_time)
+        if not os.path.isdir(self.__output_dir):
+            os.mkdir(self.__output_dir)
 
 
     def __draw_map (self):
+        if not self.draw_graphs:
+            return
+
         graph_pos = nx.spectral_layout(self.__G)
         neutral = [ x.name for x in self.get_neutral_territories() ]
         nx.draw_networkx_nodes(self.__G,graph_pos, node_size=1, node_color='grey', alpha=0.3,nodelist=neutral)
@@ -42,8 +48,6 @@ class Game(object):
         else:
             name = 'turn_{}'.format(self.__turn)
 
-        if not os.path.isdir(self.__output_dir):
-            os.mkdir(self.__output_dir)
         fname = '{}.png'.format(name)
         output = os.path.join(self.__output_dir,fname)
         plt.savefig(output,dpi=450)
@@ -273,4 +277,12 @@ class Game(object):
     @property
     def turn (self):
         return self.__turn
+
+    @property
+    def draw_graphs (self):
+        return self.__draw_graphs
+
+    @draw_graphs.setter
+    def draw_graphs (self,val):
+        self.__draw_graphs = val
 
