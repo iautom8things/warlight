@@ -54,11 +54,12 @@ from lib.territory import Territory
 from lib.bonusgroup import BonusGroup
 from lib.moves import AttackMove, PlacementMove, TransferMove
 
-g = Game(seed=42,adjmat=adjmat)
-player_1 = Player('Player 1','red')
-player_2 = Player('Player 2','blue')
-from lib.strategy import Greedy
-player_1.strategy = Greedy()
+g = Game(adjmat=adjmat)
+player_1 = Player('Player 1','green')
+player_2 = Player('Player 2','purple')
+from lib.strategy import Greedy,Opportunistic
+player_1.strategy = Opportunistic()
+player_2.strategy = Opportunistic()
 g.add_player(player_1)
 g.add_player(player_2)
 
@@ -79,13 +80,3 @@ g.start_game(5)
 player_1, player_2 = g.players.keys()
 
 results = g.run_game()
-p1troops = [ x['players']['Player 1']['num_troops'] for x in results ]
-p2troops = [ x['players']['Player 2']['num_troops'] for x in results ]
-#plt.clf()
-#plt.plot(range(len(p1troops)),p1troops,color='blue')
-#plt.plot(range(len(p1troops)),p2troops,color='red')
-#plt.clf()
-#plt.show()
-
-#plt.show()
-
