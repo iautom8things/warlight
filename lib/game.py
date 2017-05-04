@@ -132,7 +132,7 @@ class Game(object):
             result = self.process_turn()
             results.append(result)
         self.__draw_map()
-        output = os.path.join(self.__output_dir,'movelist')
+        output = os.path.join(self.__output_dir,'movelist.log')
         with open(output,'w') as f:
             f.write("\n".join([ json.dumps(x) for x in results ]))
 
