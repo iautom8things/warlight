@@ -25,7 +25,7 @@ class Game(object):
         for k, data in adjmat.items():
             for n in data['adj_nodes']:
                 self.__G.add_edge(k,n)
-        self.__output_dir = 'fig/{}'.format(self.__start_time)
+        self.__output_dir = 'fig/{}'.format(self.__start_time).replace(' ','_').replace(':','-')
         if not os.path.isdir(self.__output_dir):
             os.mkdir(self.__output_dir)
 
