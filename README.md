@@ -7,3 +7,9 @@ This is a framework for developing Warlight/Risk - esque Artificial Intelligence
 - numpy
 - networkx
 - matplotlib
+
+### How to run a simulation
+
+```
+$ python3 run_simulation.py
+```

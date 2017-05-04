@@ -54,7 +54,7 @@ from lib.territory import Territory
 from lib.bonusgroup import BonusGroup
 from lib.moves import AttackMove, PlacementMove, TransferMove
 
-g = Game(adjmat=adjmat)
+g = Game(adjmat=adjmat,draw_graphs=True)
 player_1 = Player('Player 1','green')
 player_2 = Player('Player 2','purple')
 from lib.strategy import Greedy,Opportunistic
